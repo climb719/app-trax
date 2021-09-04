@@ -6,4 +6,5 @@
 
 const api = new ApiService("http://localhost:3000")
 
-api.getJobs().then(console.log)
+// api.getJobs().then(console.log)
+Job.getJobs()
