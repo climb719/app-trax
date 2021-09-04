@@ -1,8 +1,10 @@
 class Job {
 
+    static all = []
 
     constructor(details) {
         this.details = details
+        this.constructor.all.push(this)
         console.log(this)
     }
 
