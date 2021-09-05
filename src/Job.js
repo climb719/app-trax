@@ -10,11 +10,11 @@ class Job {
 
     render = () => {
         const {title, company, notes, date, link, id} = this.details
-        
         document.getElementById("job-container").innerHTML += `
         <div class="job-card" data-id=${id}>
         <p class="title">${title}</p>
         <p class="company">${company}</p>
+        <p class="date">${date}</p>
         </div>`
     }
 
