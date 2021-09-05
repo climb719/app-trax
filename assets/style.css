@@ -8,10 +8,11 @@ body {
 }
 
 #job-container {
-    display: grid;
+    display: flex;
     /* grid-template-columns: inherit; */
-    justify-content: space-around;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
   
   .job-card {
