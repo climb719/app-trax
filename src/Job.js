@@ -5,23 +5,27 @@ class Job {
     constructor(details) {
         this.details = details
         this.constructor.all.push(this)
-        console.log(this)
+        // console.log(this)
     }
 
-    static renderIndex() {
-    //     // create a job container and iterate through array of jobs
-    //     // call a method to render cards  
-
+    render = () => {
+        const {title, company, notes, date, link, id} = this.details
+        
+        document.getElementById("job-container").innerHTML += `
+        <div class="job-card" data-id=${id}>
+        <p class="title">${title}</p>
+        <p class="company">${company}</p>
+        </div>`
     }
+
 
 
     static getJobs() {
         api.getJobs().then(jobs => {
-            jobs.forEach(job => new Job(job))
+            jobs.forEach(job => new Job(job).render())
             //get all jobs, interating through them from the api, initializing each job
-            // then storing them in all array b/c constructor 
-            this.renderIndex()
-            
+            // then storing them in all array b/c constructor and calling render
+           
         })
     }
 }

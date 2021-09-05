@@ -9,10 +9,16 @@ body {
 
 #job-container {
     display: flex;
-}
-
-.job-card {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .job-card {
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 25px;
+   
+    border: 3px solid teal;
     text-align: center;
-    border: 2px;
-    border-radius: 3em;
 }
+  
