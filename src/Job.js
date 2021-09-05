@@ -16,16 +16,35 @@ class Job {
         <p class="company">${company}</p>
         <p class="date">${date}</p>
         </div>`
+       
     }
+
+    static handleCardClick = (e) => {
+        console.log(e.target)
+    }
+   
+    
+    static renderContainer() {
+        const jobDiv = document.createElement('div')
+        jobDiv.id = "job-container"
+        document.getElementById('main').appendChild(jobDiv)
+        this.all.forEach(job => job.render())
+        jobDiv.addEventListener('click', this.handleCardClick)
+        // (event) => {
+        //     this.handleCardClick(event)
+        // })
+    }
+
+    
 
 
 
     static getJobs() {
         api.getJobs().then(jobs => {
-            jobs.forEach(job => new Job(job).render())
+            jobs.forEach(job => new Job(job))
             //get all jobs, interating through them from the api, initializing each job
             // then storing them in all array b/c constructor and calling render
-           
+           this.renderContainer()
         })
     }
 }
