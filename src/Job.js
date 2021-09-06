@@ -31,17 +31,18 @@ class Job {
     // }
    
     
-    // static renderContainer() {
+    static renderContainer() {
+        //console.log(this)
     //     const jobDiv = document.createElement('div')
     //     jobDiv.id = "job-container"
     //     document.getElementById('main').appendChild(jobDiv)
     //    // debugger
-    //     this.all.forEach(job => job.render())
+        this.all.forEach(job => console.log(job))
     //     jobDiv.addEventListener('click', this.handleCardClick)
     //     // (event) => {
     //     //     this.handleCardClick(event)
     //     // })
-    // }
+    }
 
 
     static getJobs() {

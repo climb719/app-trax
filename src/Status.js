@@ -29,9 +29,9 @@ class Status {
         Array.from(statusDivs).forEach(element => {
             let jobDiv = document.createElement('div')
             jobDiv.id = "job-container"
-            element.appendChild(jobDiv)
-        
+            element.appendChild(jobDiv) 
     })
+    Job.renderContainer()
          
 }
     
