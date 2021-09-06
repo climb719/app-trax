@@ -27,9 +27,9 @@ class Status {
       
         const statusDivs = document.getElementsByClassName("status-card")
         Array.from(statusDivs).forEach(element => {
-            let jobDiv = document.createElement('div')
+            const jobDiv = document.createElement('div')
             jobDiv.id = `${element.dataset.id}`
-            element.appendChild(jobDiv) 
+            element.append(jobDiv) 
     })
     Job.renderContainer()
          
