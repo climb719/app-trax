@@ -11,7 +11,7 @@ class Job {
         this.statusName = statusName
         this.statusId = statusId
         this.constructor.all.push(this)
-        // console.log(this)
+       //console.log(this)
     }
 
     render = () => {
@@ -20,14 +20,15 @@ class Job {
       //console.log(this)
         // console.log(this.statusId)
          let n = this.statusId
-         console.log(n)
-         debugger
-        //  document.getElementById(n).innerHTML += `
-        // <div class="job-card" data-id=${id}>
-        // <p class="title">${title}</p>
-        // <p class="company">${company}</p>
-        // <p class="date">${date}</p>
-        // </div>`
+       console.log(n)
+       console.log(document.getElementById(n))
+        // debugger
+       document.getElementById(n).innerHTML += `
+        <div class="job-card" data-id=${id}>
+        <p class="title">${title}</p>
+        <p class="company">${company}</p>
+        <p class="date">${date}</p>
+        </div>`
 
     }
 
@@ -56,7 +57,6 @@ class Job {
     //     // })
     }
 
-    static findMatch = (n) => this.all.find(job =>  job.statusId == n)
 
 
     static getJobs() {
