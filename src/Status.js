@@ -2,11 +2,12 @@ class Status {
 
     static all = []
 
-    constructor({id, name}) {
+    constructor({id, name, jobs}) {
         this.id = id
         this.name = name
+        this.jobs = jobs
         this.constructor.all.push(this)
-        console.log(this)
+        //console.log(this)
     }
 
     static getStatuses() {
@@ -17,16 +18,21 @@ class Status {
     }
 
     static renderDivs() {
-        const statusDivs = document.createElement('div')
         const main = document.getElementById('main')
         
-        this.all.forEach(function(status) { 
-         //debugger
-        main.innerHTML += `<div class= "status-card">${status.name}</div>`
+        this.all.forEach(status => { 
+        main.innerHTML += `
+        <div class= "status-card">${status.name}</div>`
         });
+      
+        const statusDivs = document.getElementsByClassName("status-card")
+        Array.from(statusDivs).forEach(element => {
+            let jobDiv = document.createElement('div')
+            jobDiv.id = "job-container"
+            element.appendChild(jobDiv)
         
-    }
+    })
          
-    
+}
     
 }
