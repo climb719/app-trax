@@ -14,18 +14,23 @@ class Job {
         // console.log(this)
     }
 
-    // render = () => {
-    //     console.log(job)
-        // const {title, company, notes, date, link, statusName, id} = this
-        // //debugger
-        // document.getElementById("job-container").innerHTML += `
+    render = () => {
+      
+      const {title, company, notes, date, link, statusName, id, StatusId} = this
+      //console.log(this)
+        // console.log(this.statusId)
+         let n = this.statusId
+         console.log(n)
+         debugger
+        //  document.getElementById(n).innerHTML += `
         // <div class="job-card" data-id=${id}>
         // <p class="title">${title}</p>
         // <p class="company">${company}</p>
         // <p class="date">${date}</p>
         // </div>`
-      
-    // }
+
+    }
+
 
     // static handleCardClick = (e) => {
     //    if (e.target.className === 'title') {
@@ -40,13 +45,18 @@ class Job {
     //     jobDiv.id = "job-container"
     //     document.getElementById('main').appendChild(jobDiv)
     //    // debugger
-        this.all.forEach(job => console.log(job))
+        
+        this.all.forEach(job => {
+          job.render()
+        })
         
     //     jobDiv.addEventListener('click', this.handleCardClick)
     //     // (event) => {
     //     //     this.handleCardClick(event)
     //     // })
     }
+
+    static findMatch = (n) => this.all.find(job =>  job.statusId == n)
 
 
     static getJobs() {
