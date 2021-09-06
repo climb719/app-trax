@@ -2,26 +2,28 @@ class Job {
 
     static all = []
   
-    constructor({id, title, company, notes, date, statusName, status_id}) {
+    constructor({id, title, company, notes, date, statusName, statusId}) {
         this.id = id;
         this.title = title;
         this.company = company;
         this.notes = notes;
         this.date = date;
         this.statusName = statusName
-      //  this.status_id = status_id
+        this.statusId = statusId
         this.constructor.all.push(this)
+        // console.log(this)
     }
 
     // render = () => {
-    //     const {title, company, notes, date, link, statusName, id} = this
-    //     //debugger
-    //     document.getElementById("job-container").innerHTML += `
-    //     <div class="job-card" data-id=${id}>
-    //     <p class="title">${title}</p>
-    //     <p class="company">${company}</p>
-    //     <p class="date">${date}</p>
-    //     </div>`
+    //     console.log(job)
+        // const {title, company, notes, date, link, statusName, id} = this
+        // //debugger
+        // document.getElementById("job-container").innerHTML += `
+        // <div class="job-card" data-id=${id}>
+        // <p class="title">${title}</p>
+        // <p class="company">${company}</p>
+        // <p class="date">${date}</p>
+        // </div>`
       
     // }
 
@@ -39,6 +41,7 @@ class Job {
     //     document.getElementById('main').appendChild(jobDiv)
     //    // debugger
         this.all.forEach(job => console.log(job))
+        
     //     jobDiv.addEventListener('click', this.handleCardClick)
     //     // (event) => {
     //     //     this.handleCardClick(event)
