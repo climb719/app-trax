@@ -7,6 +7,15 @@ body {
     font-family: Kaisei Tokumin;
 }
 
+.status-card {
+  display: inline-flex;
+  background-color: whitesmoke;
+  padding: 8px;
+  border: 3px solid teal;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 #job-container {
     display: flex;
     /* grid-template-columns: inherit; */

@@ -22,7 +22,7 @@ class Status {
         
         this.all.forEach(function(status) { 
          //debugger
-        main.innerHTML += `<div class= "status-divs">${status.name}</div>`
+        main.innerHTML += `<div class= "status-card">${status.name}</div>`
         });
         
     }
