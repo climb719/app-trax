@@ -2,13 +2,14 @@ class Job {
 
     static all = []
   
-    constructor({id, title, company, notes, date, statusName}) {
+    constructor({id, title, company, notes, date, statusName, status_id}) {
         this.id = id;
         this.title = title;
         this.company = company;
         this.notes = notes;
         this.date = date;
         this.statusName = statusName
+      //  this.status_id = status_id
         this.constructor.all.push(this)
     }
 
