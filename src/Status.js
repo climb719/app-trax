@@ -23,7 +23,7 @@ class Status {
         this.all.forEach(status => { 
         main.innerHTML += `
         <div class= "status-card" data-id=${status.id}>${status.name}</div>`
-        status.renderJobs()
+       status.renderJobs()
         })
         //console.log(this)
       // renderJobs()
@@ -35,7 +35,7 @@ class Status {
             jobDiv.id = `${this.id}`
             jobDiv.classList.add('jobs');
             console.log(this.jobs)
-
+            // debugger
         
             
     }
