@@ -52,7 +52,7 @@ class Status {
         this.jobs.forEach(job => {
             //console.log(job)
             const newJob = new Job(job);       
-            newJob.render()
+            newJob.renderOptions()
           
      })
  }
