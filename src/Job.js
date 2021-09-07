@@ -14,21 +14,21 @@ class Job {
        //console.log(this)
     }
 
-    // render = () => { 
-    //   const {title, company, notes, date, link, statusName, id, StatusId} = this
-    //   //console.log(this)
-    //     // console.log(this.statusId)
-    //      let n = this.statusId
-    //    console.log(n)
-    //    console.log(document.getElementById(n))
-    //    document.getElementById(n).innerHTML += `
-    //     <div class="job-card" data-id=${id}>
-    //     <p class="title">${title}</p>
-    //     <p class="company">${company}</p>
-    //     <p class="date">${date}</p>
-    //     </div>`
+    render = () => { 
+      const {title, company, notes, date, link, statusName, id, StatusId} = this
+      //console.log(this)
+        // console.log(this.statusId)
+         let n = this.statusId
+       console.log(n)
+       console.log(document.getElementById(n))
+       document.getElementById(n).innerHTML += `
+        <div class="job-card" data-id=${id}>
+        <p class="title">${title}</p>
+        <p class="company">${company}</p>
+        <p class="date">${date}</p>
+        </div>`
 
-    // }
+    }
 
     
     // static renderContainer() {
