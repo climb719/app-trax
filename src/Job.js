@@ -14,20 +14,26 @@ class Job {
        //console.log(this)
     }
 
-    render = () => { 
-      const {title, company, notes, appDate, link, statusName, id, StatusId} = this
-      //console.log(this)
-        // console.log(this.statusId)
-         let n = this.statusId
-       console.log(n)
-       console.log(document.getElementById(n))
-       document.getElementById(n).innerHTML += `
+    renderJobDivs = () => { 
+      const statusDivs =  document.getElementsByClassName("status-card")
+      const jobDiv = document.createElement('div')
+        Array.from(statusDivs).forEach(element => {
+            jobDiv.id = `${element.dataset.id}`
+            element.append(jobDiv)})
+          this.render()
+    }
+
+
+    render = () => {
+        const {title, company, notes, appDate, link, statusName, id, StatusId} = this
+        let n = this.statusId
+        document.getElementById(n).innerHTML += `
         <div class="job-card" data-id=${n}>
         <p class="title">${title}</p>
         <p class="company">${company}</p>
         <p class="date">${appDate}</p>
         </div>`
-      
+       
     }
 
     // static getJobs() {

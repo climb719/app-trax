@@ -24,15 +24,16 @@ class Status {
         const main = document.getElementById('main')
         main.appendChild(statusDiv)
         //statusDiv.classList.add("status-cards")
-      
          this.all.forEach(status => { 
             statusDiv.innerHTML += `
              <div class= "status-card" data-id=${status.id}> 
              <p class= "name"> ${status.name}</p>
-             <div class "job-card" id=${status.id}>
+            
              </div>`
              status.renderJobs()
          })
+
+        // <div class "job-card" id=${status.id}>
         //  const statusDivs =  document.getElementsByClassName("status-card")
         //  Array.from(statusDivs).forEach(element => {
         //      const jobDiv = document.createElement('div')
@@ -51,7 +52,7 @@ class Status {
         this.jobs.forEach(job => {
             //console.log(job)
             const newJob = new Job(job);       
-            newJob.render()
+            newJob.renderJobDivs()
      })
  }
 
