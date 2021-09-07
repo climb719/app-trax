@@ -9,11 +9,7 @@ body {
 
 .status-card {
   display: inline-table;
-  max-width: fit-content;
 
-  padding: 8px;
-  margin-left: 2em;
-  margin-right: 2em;
 }
 
 .status-card .name {
@@ -25,7 +21,6 @@ body {
   
 .job-card {
     display: table;
-    
     background-color: whitesmoke;
     padding: 20px;
     border-radius: 25px;
