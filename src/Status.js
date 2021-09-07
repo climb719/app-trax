@@ -23,19 +23,23 @@ class Status {
         this.all.forEach(status => { 
         main.innerHTML += `
         <div class= "status-card" data-id=${status.id}>${status.name}</div>`
-       status.renderJobs()
+       //status.renderJobs()
         })
         //console.log(this)
-      // renderJobs()
+      this.renderJobs()
     }
 
-    renderJobs() {
+   static  renderJobs() {
+        const statusDivs = document.getElementsByClassName("status-card")
+        Array.from(statusDivs).forEach(element => {
             const jobDiv = document.createElement('div')
-            console.log(this)
-            jobDiv.id = `${this.id}`
-            jobDiv.classList.add('jobs');
-            console.log(this.jobs)
-            // debugger
+            jobDiv.id = `${element.dataset.id}`
+            element.append(jobDiv) })
+
+           // console.log(this)
+           
+            //jobDiv.classList.add('jobs');
+            //console.log(this.jobs)       // debugger
         
             
     }
