@@ -13,24 +13,32 @@ class Status {
     static getStatuses() {
         api.getStatuses().then(statuses => {
         statuses.forEach(status => new Status(status))
-        this.renderDivs() 
+        this.renderDivs()
         })
+     
     }
 
-     static renderDivs() {
+    static renderDivs() {
         const statusDiv = document.createElement('div')
+        
         const main = document.getElementById('main')
         main.appendChild(statusDiv)
         //statusDiv.classList.add("status-cards")
+      
          this.all.forEach(status => { 
             statusDiv.innerHTML += `
              <div class= "status-card" data-id=${status.id}> 
              <p class= "name"> ${status.name}</p>
+             <div class "job-card" id=${status.id}>
              </div>`
-             
-           
+             status.renderJobs()
          })
-        //console.log(statusDiv)
+        //  const statusDivs =  document.getElementsByClassName("status-card")
+        //  Array.from(statusDivs).forEach(element => {
+        //      const jobDiv = document.createElement('div')
+        //      jobDiv.id = `${element.dataset.id}`
+        //      element.append(jobDiv)})
+       // debugger
         // innerHTML += `
         // <div class= "status-card" data-id=${status.id}> ${status.name}
         // <div class "job-card" id=${status.id}>
