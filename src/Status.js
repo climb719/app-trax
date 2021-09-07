@@ -17,16 +17,22 @@ class Status {
         })
     }
 
-    static renderDivs() {
-        //const statusDiv = document.createElement('div')
+     static renderDivs() {
+        const statusDiv = document.createElement('div')
         const main = document.getElementById('main')
-        this.all.forEach(status => { 
-        main.innerHTML += `
-        <div class= "status-card" data-id=${status.id}> ${status.name}
-        <div class "job-card" id=${status.id}>
-        </div>`
-        status.renderJobs()
-        })
+        main.appendChild(statusDiv)
+        //statusDiv.classList.add("status-cards")
+         this.all.forEach(status => { 
+            statusDiv.innerHTML += `
+             <div class= "status-card"  data-id=${status.id}> ${status.name}</div>`
+         })
+            
+        // innerHTML += `
+        // <div class= "status-card" data-id=${status.id}> ${status.name}
+        // <div class "job-card" id=${status.id}>
+        // </div>`
+        // status.renderJobs()
+        // })
     }
 
      renderJobs() {

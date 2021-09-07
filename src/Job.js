@@ -22,27 +22,13 @@ class Job {
        console.log(n)
        console.log(document.getElementById(n))
        document.getElementById(n).innerHTML += `
-        <div class="job-card" data-id=${id}>
+        <div class="job-card" data-id=${n}>
         <p class="title">${title}</p>
         <p class="company">${company}</p>
         <p class="date">${appDate}</p>
         </div>`
-
+      
     }
-
-    
-    // static renderContainer() {
-    //     //console.log(this)
-    // //     const jobDiv = document.createElement('div')
-    // //     jobDiv.id = "job-container"
-    // //     document.getElementById('main').appendChild(jobDiv)
-    //     this.all.forEach(job => {
-    //       job.render()
-    //     })
-   
-    // }
-
-
 
     // static getJobs() {
     //     api.getJobs().then(jobs => {
