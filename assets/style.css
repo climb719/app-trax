@@ -7,7 +7,7 @@ body {
     font-family: Kaisei Tokumin;
 }
 
-.status-card {
+.status {
   display: inline-flex;
   background-color: whitesmoke;
   padding: 8px;

@@ -22,7 +22,6 @@ class Job {
          let n = this.statusId
        console.log(n)
        console.log(document.getElementById(n))
-        // debugger
        document.getElementById(n).innerHTML += `
         <div class="job-card" data-id=${id}>
         <p class="title">${title}</p>
