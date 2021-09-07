@@ -26,7 +26,7 @@ class Status {
         //statusDiv.classList.add("status-cards")
          this.all.forEach(status => { 
             statusDiv.innerHTML += `
-             <div class= "status-card" data-id=${status.id}> 
+             <div class= "status-card" id=${status.id}> 
              <p class= "name"> ${status.name}</p>
             
              </div>`
@@ -52,7 +52,8 @@ class Status {
         this.jobs.forEach(job => {
             //console.log(job)
             const newJob = new Job(job);       
-            newJob.renderJobDivs()
+            newJob.render()
+          
      })
  }
 

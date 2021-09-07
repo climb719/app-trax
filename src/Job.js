@@ -14,16 +14,16 @@ class Job {
        //console.log(this)
     }
 
-    renderJobDivs = () => { 
-      const statusDivs =  document.getElementsByClassName("status-card")
-      const jobDiv = document.createElement('div')
-      Array.from(statusDivs).forEach(element => {
+    // renderJobDivs = () => { 
+    //   const statusDivs =  document.getElementsByClassName("status-card")
+    //   const jobDiv = document.createElement('div')
+    //   Array.from(statusDivs).forEach(element => {
           
-          jobDiv.id = `${element.dataset.id}`
-          element.appendChild(jobDiv) 
-      })
-      this.render()  
-    }
+    //       jobDiv.id = `${element.dataset.id}`
+    //       element.appendChild(jobDiv) 
+    //   })
+    //   this.render()  
+    // }
 
     // static handleCardClick = (e) => {
     //   console.log(e.target)
@@ -31,6 +31,7 @@ class Job {
 
 
     render = () => {
+      console.log(this)
         const {title, company, notes, appDate, link, statusName, id, StatusId} = this
         let n = this.statusId
         document.getElementById(n).innerHTML += `
