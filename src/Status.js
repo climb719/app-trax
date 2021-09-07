@@ -24,9 +24,13 @@ class Status {
         //statusDiv.classList.add("status-cards")
          this.all.forEach(status => { 
             statusDiv.innerHTML += `
-             <div class= "status-card"  data-id=${status.id}> ${status.name}</div>`
+             <div class= "status-card" data-id=${status.id}> 
+             <p class= "name"> ${status.name}</p>
+             </div>`
+             
+           
          })
-            
+        //console.log(statusDiv)
         // innerHTML += `
         // <div class= "status-card" data-id=${status.id}> ${status.name}
         // <div class "job-card" id=${status.id}>
