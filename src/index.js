@@ -8,5 +8,5 @@ const api = new ApiService("http://localhost:3000")
 
 // api.getJobs().then(console.log)
 Status.getStatuses()
-Job.getJobs()
+//Job.getJobs()
 

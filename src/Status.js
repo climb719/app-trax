@@ -7,7 +7,7 @@ class Status {
         this.name = name
         this.jobs = jobs
         this.constructor.all.push(this)
-        //console.log(this)
+       // debugger
     }
 
     static getStatuses() {
@@ -19,21 +19,28 @@ class Status {
 
     static renderDivs() {
         const main = document.getElementById('main')
-        
+      
         this.all.forEach(status => { 
         main.innerHTML += `
         <div class= "status-card" data-id=${status.id}>${status.name}</div>`
-        });
-      
-        const statusDivs = document.getElementsByClassName("status-card")
-        Array.from(statusDivs).forEach(element => {
+        status.renderJobs()
+        })
+        //console.log(this)
+      // renderJobs()
+    }
+
+    renderJobs() {
             const jobDiv = document.createElement('div')
-            jobDiv.id = `${element.dataset.id}`
-            element.append(jobDiv) 
+            console.log(this)
+            jobDiv.id = `${this.id}`
+            jobDiv.classList.add('jobs');
+            console.log(this.jobs)
+
+        
             
-    })
-    Job.renderContainer()
+    }
+
+   // Job.renderContainer()
          
 }
     
-}
