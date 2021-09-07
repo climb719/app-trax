@@ -17,11 +17,17 @@ class Job {
     renderJobDivs = () => { 
       const statusDivs =  document.getElementsByClassName("status-card")
       const jobDiv = document.createElement('div')
-        Array.from(statusDivs).forEach(element => {
-            jobDiv.id = `${element.dataset.id}`
-            element.append(jobDiv)})
-          this.render()
+      Array.from(statusDivs).forEach(element => {
+          
+          jobDiv.id = `${element.dataset.id}`
+          element.appendChild(jobDiv) 
+      })
+      this.render()  
     }
+
+    // static handleCardClick = (e) => {
+    //   console.log(e.target)
+    // }
 
 
     render = () => {
