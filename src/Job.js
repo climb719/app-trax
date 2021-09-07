@@ -2,12 +2,12 @@ class Job {
 
     static all = []
   
-    constructor({id, title, company, notes, date, statusName, statusId}) {
+    constructor({id, title, company, notes, appDate, statusName, statusId}) {
         this.id = id;
         this.title = title;
         this.company = company;
         this.notes = notes;
-        this.date = date;
+        this.appDate = appDate;
         this.statusName = statusName
         this.statusId = statusId
         this.constructor.all.push(this)
@@ -15,7 +15,7 @@ class Job {
     }
 
     render = () => { 
-      const {title, company, notes, date, link, statusName, id, StatusId} = this
+      const {title, company, notes, appDate, link, statusName, id, StatusId} = this
       //console.log(this)
         // console.log(this.statusId)
          let n = this.statusId
@@ -25,7 +25,7 @@ class Job {
         <div class="job-card" data-id=${id}>
         <p class="title">${title}</p>
         <p class="company">${company}</p>
-        <p class="date">${date}</p>
+        <p class="date">${appDate}</p>
         </div>`
 
     }

@@ -18,6 +18,7 @@ class Status {
     }
 
     static renderDivs() {
+        //const statusDiv = document.createElement('div')
         const main = document.getElementById('main')
         this.all.forEach(status => { 
         main.innerHTML += `
