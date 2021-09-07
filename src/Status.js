@@ -22,14 +22,15 @@ class Status {
         
         this.all.forEach(status => { 
         main.innerHTML += `
-        <div class= "status" data-id=${status.id}>${status.name}</div>`
+        <div class= "status-card" data-id=${status.id}>${status.name}</div>`
         });
       
-        const statusDivs = document.getElementsByClassName("status")
+        const statusDivs = document.getElementsByClassName("status-card")
         Array.from(statusDivs).forEach(element => {
             const jobDiv = document.createElement('div')
             jobDiv.id = `${element.dataset.id}`
             element.append(jobDiv) 
+            
     })
     Job.renderContainer()
          
