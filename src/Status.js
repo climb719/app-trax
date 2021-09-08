@@ -13,7 +13,7 @@ class Status {
         api.getStatuses().then(statuses => {
         statuses.forEach(status => {
             new Status(status) 
-            status.jobs.forEach(job => new Job(job)) 
+           // status.jobs.forEach(job => new Job(job)) 
         })
         this.renderDivs()
      })
@@ -24,24 +24,21 @@ class Status {
         const main = document.getElementById('main')
         const addJob = document.createElement("button")
         addJob.innerText = "Add a New Job"
+        addJob.addEventListener('click', Job.addJob)
         main.append(statusDiv, addJob)
         this.all.forEach(status => { 
             statusDiv.innerHTML += `
              <div class= "status-card" id=${status.id}> 
              <p class= "name"> ${status.name}</p>
              </div>`
-            status.renderJobs()
-            
-        })
-        addJob.addEventListener('click', event => {
-                console.log(event.target)
+            status.renderJobs()    
         })
     }
-
+    
     renderJobs() {
         this.jobs.forEach(job => {
         const newJob = new Job(job) 
-        newJob.renderOptions()  
+        newJob.addCardEvents()  
         })
     } 
 

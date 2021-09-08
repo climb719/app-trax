@@ -14,7 +14,7 @@ class Job {
         this.constructor.all.push(this)
     }
 
-    renderOptions = () => { 
+    addCardEvents = () => { 
       const statusDivs =  document.getElementsByClassName("status-card")
       Array.from(statusDivs).forEach(element => {
         element.addEventListener('click', Job.handleCardClick)
@@ -64,5 +64,9 @@ class Job {
         Status.renderDivs()
       }
     }
+
+    static addJob = (e) => {
+      console.log(e.target)
+   }
 
 }
