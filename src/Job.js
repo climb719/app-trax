@@ -19,10 +19,10 @@ class Job {
       Array.from(statusDivs).forEach(element => {
         element.addEventListener('click', Job.handleCardClick)
       })
-      this.renderJobs()  
+      this.render()  
     }
 
-    renderJobs = () => {
+    render = () => {
       console.log(this)
         const {title, company, notes, appDate, link, statusName, id, StatusId} = this
         let n = this.statusId
@@ -32,7 +32,6 @@ class Job {
         <p clss="company">${company}</p>
         <p clss="date">${appDate}</p>
         </div>`
-     
     }
 
     static handleCardClick = (e) => {
@@ -43,7 +42,6 @@ class Job {
     }
 
     static find = (id) => this.all.find(job => job.id == id)
-
 
     showDetails = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
