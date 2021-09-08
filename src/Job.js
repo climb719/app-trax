@@ -18,19 +18,20 @@ class Job {
       const statusDivs =  document.getElementsByClassName("status-card")
      // const jobDiv = document.createElement('div')
       Array.from(statusDivs).forEach(element => {
-        element.addEventListener('click', event => {
-              console.log(event.target)
-        })
+        element.addEventListener('click', Job.handleCardClick)
+        //  event => {    
+        //   console.log(event.target)
+        // })
       })
-      this.render()  
+      this.renderJobs()  
     }
 
-    // static handleCardClick = (e) => {
-    //   console.log(e.target)
-    // }
+    static handleCardClick = (e) => {
+      console.log(e.target)
+    }
 
 
-    render = () => {
+    renderJobs = () => {
       console.log(this)
         const {title, company, notes, appDate, link, statusName, id, StatusId} = this
         let n = this.statusId
