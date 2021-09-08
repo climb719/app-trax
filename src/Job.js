@@ -67,6 +67,23 @@ class Job {
 
     static addJob = (e) => {
       modal.open()
+   
    }
+
+   static openNewJobForm = () => {
+  
+    modal.innerHTML = `<form>
+    <label for="title">Job Title:</label><br>
+    <input type="text" name="title""><br>
+    <label for="company">Last name:</label><br>
+    <input type="text" name="company">
+    <label for="notes">Notes:</label><br>
+    <input type="textArea" name="notes">
+    <input type="submit"="Add New Job"><br>
+    </form>`
+   }
+
+
+   
 
 }

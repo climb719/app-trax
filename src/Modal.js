@@ -1,8 +1,6 @@
 class Modal {
 
-    constructor() {
-        this.addClose()
-    }
+   
 
     get modal() {
         return document.getElementById("myModal")
@@ -16,11 +14,5 @@ class Modal {
         this.modal.style.display = "none"
     }
 
-    addClose = () => {
-        this.modal.addEventListener("click", (e) => {
-            if (e.target.classList.contains("close")) {
-                console.log("close it")
-            }
-        })
-    }
+
 }
