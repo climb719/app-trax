@@ -5,7 +5,7 @@
 
 
 const api = new ApiService("http://localhost:3000")
-const modal = Modal()
+const modal = new Modal()
 
 // api.getJobs().then(console.log)
 Status.getStatuses()

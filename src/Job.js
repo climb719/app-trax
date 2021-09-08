@@ -66,7 +66,7 @@ class Job {
     }
 
     static addJob = (e) => {
-      console.log(e.target)
+      modal.open()
    }
 
 }
