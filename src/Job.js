@@ -27,8 +27,14 @@ class Job {
     }
 
     static handleCardClick = (e) => {
-      console.log(e.target)
+      if (e.target.classList.contains("title")) {
+       const id = e.target.closest(".job-card").dataset.id
+       // this.find(id)
+      }
+     
     }
+
+    static find = (id) => this.all.find(job => job.id == id)
 
 
     renderJobs = () => {
