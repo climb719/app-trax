@@ -64,15 +64,8 @@ class Job {
       if (e.target.id == "back") {
         const main = document.getElementById("main")
         main.innerHTML = ''
+        Status.renderDivs()
       }
     }
 
-    // static getJobs() {
-    //     api.getJobs().then(jobs => {
-    //         jobs.forEach(job => new Job(job))
-    //         //get all jobs, interating through them from the api, initializing each job
-    //         // then storing them in all array b/c constructor and calling render
-    //       // this.renderContainer()
-    //     })
-    // }
 }
