@@ -2,12 +2,13 @@ class Job {
 
     static all = []
   
-    constructor({id, title, company, notes, appDate, statusName, statusId}) {
+    constructor({id, title, company, notes, appDate, link, statusName, statusId}) {
         this.id = id;
         this.title = title;
         this.company = company;
         this.notes = notes;
         this.appDate = appDate;
+        this.link = link
         this.statusName = statusName
         this.statusId = statusId
         this.constructor.all.push(this)
@@ -26,17 +27,6 @@ class Job {
       this.renderJobs()  
     }
 
-    static handleCardClick = (e) => {
-      if (e.target.classList.contains("title")) {
-       const id = e.target.closest(".job-card").dataset.id
-       // this.find(id)
-      }
-     
-    }
-
-    static find = (id) => this.all.find(job => job.id == id)
-
-
     renderJobs = () => {
       console.log(this)
         const {title, company, notes, appDate, link, statusName, id, StatusId} = this
@@ -49,6 +39,30 @@ class Job {
         </div>`
     }
   
+
+    static handleCardClick = (e) => {
+      if (e.target.classList.contains("title")) {
+        const id = e.target.closest(".job-card").dataset.id
+        this.find(id).showDetails()
+      }
+     
+    }
+
+    static find = (id) => this.all.find(job => job.id == id)
+
+
+    showDetails = () => {
+      const {title, company, notes, appDate, link, statusName, id, StatusId} = this
+      document.getElementById("main").innerHTML = `
+      <div class ="details">
+      <h2>${title}</h2>
+      <h3>${company}</h3>
+      <p>${notes}</p>
+      <p>${appDate}</p>
+      <a href="${link}">More application details</a>
+      </div>`
+      console.log(`${link}`)
+    }
 
     // static getJobs() {
     //     api.getJobs().then(jobs => {
