@@ -19,8 +19,10 @@ class Status {
     static renderDivs() {
         const statusDiv = document.createElement('div')
         const main = document.getElementById('main')
-        main.appendChild(statusDiv)
-        //statusDiv.classList.add("status-cards")
+        const addJob = document.createElement("button")
+        addJob.innerText = "Add a New Job"
+        main.append(statusDiv, addJob)
+        
         this.all.forEach(status => { 
             statusDiv.innerHTML += `
              <div class= "status-card" id=${status.id}> 
@@ -28,6 +30,9 @@ class Status {
              </div>`
             status.renderJobs()
         })
+        addJob.addEventListener('click', event => {
+                console.log(event.target)
+            })
     }
 
     renderJobs() {
