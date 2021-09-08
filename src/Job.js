@@ -12,22 +12,17 @@ class Job {
         this.statusName = statusName
         this.statusId = statusId
         this.constructor.all.push(this)
-       //console.log(this)
     }
 
     renderOptions = () => { 
       const statusDivs =  document.getElementsByClassName("status-card")
-     // const jobDiv = document.createElement('div')
       Array.from(statusDivs).forEach(element => {
         element.addEventListener('click', Job.handleCardClick)
-        //  event => {    
-        //   console.log(event.target)
-        // })
       })
       this.renderJobs()  
     }
 
-     renderJobs = () => {
+    renderJobs = () => {
       console.log(this)
         const {title, company, notes, appDate, link, statusName, id, StatusId} = this
         let n = this.statusId
@@ -39,14 +34,12 @@ class Job {
         </div>`
      
     }
-  
 
     static handleCardClick = (e) => {
       if (e.target.classList.contains("title")) {
         const id = e.target.closest(".job-card").dataset.id
         this.find(id).showDetails()
       }
-     
     }
 
     static find = (id) => this.all.find(job => job.id == id)
@@ -72,7 +65,6 @@ class Job {
         const main = document.getElementById("main")
         main.innerHTML = ''
       }
-
     }
 
     // static getJobs() {
