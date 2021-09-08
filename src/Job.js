@@ -16,6 +16,8 @@ class Job {
     }
 
     renderOptions = () => { 
+      // const main = document.getElementById("main")
+      // main.innerHTML = ''
       const statusDivs =  document.getElementsByClassName("status-card")
      // const jobDiv = document.createElement('div')
       Array.from(statusDivs).forEach(element => {
@@ -34,9 +36,10 @@ class Job {
         document.getElementById(n).innerHTML += `
         <div class="job-card" data-id=${n}>
         <p class="title">${title}</p>
-        <p class="company">${company}</p>
-        <p class="date">${appDate}</p>
+        <p clss="company">${company}</p>
+        <p clss="date">${appDate}</p>
         </div>`
+     
     }
   
 
@@ -63,7 +66,12 @@ class Job {
       </div>
       <p><button id="edit"> Edit my details </button></p>
       <p><button id="back"> Back </button></p>`
-      
+      document.getElementById("back").addEventListener('click', this.handleShowClick)
+    }
+
+    handleShowClick = (e) => {
+      console.log(e.target.id)
+
     }
 
     // static getJobs() {
