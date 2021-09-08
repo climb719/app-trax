@@ -16,8 +16,6 @@ class Job {
     }
 
     renderOptions = () => { 
-      // const main = document.getElementById("main")
-      // main.innerHTML = ''
       const statusDivs =  document.getElementsByClassName("status-card")
      // const jobDiv = document.createElement('div')
       Array.from(statusDivs).forEach(element => {
@@ -29,7 +27,7 @@ class Job {
       this.renderJobs()  
     }
 
-    renderJobs = () => {
+     renderJobs = () => {
       console.log(this)
         const {title, company, notes, appDate, link, statusName, id, StatusId} = this
         let n = this.statusId
@@ -70,7 +68,10 @@ class Job {
     }
 
     handleShowClick = (e) => {
-      console.log(e.target.id)
+      if (e.target.id == "back") {
+        const main = document.getElementById("main")
+        main.innerHTML = ''
+      }
 
     }
 

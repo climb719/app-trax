@@ -13,14 +13,15 @@ class Status {
     static getStatuses() {
         api.getStatuses().then(statuses => {
         statuses.forEach(status => new Status(status))
+            // {new Status(status)
+            // status.jobs.forEach(job => new Job(job))
+            // })
         this.renderDivs()
-        })
-     
-    }
+     })
+    } 
 
     static renderDivs() {
         const statusDiv = document.createElement('div')
-        
         const main = document.getElementById('main')
         main.appendChild(statusDiv)
         //statusDiv.classList.add("status-cards")
@@ -30,9 +31,10 @@ class Status {
              <p class= "name"> ${status.name}</p>
             
              </div>`
+             //debugger
              status.renderJobs()
-         })
-
+        })
+    }
         // <div class "job-card" id=${status.id}>
         //  const statusDivs =  document.getElementsByClassName("status-card")
         //  Array.from(statusDivs).forEach(element => {
@@ -46,7 +48,7 @@ class Status {
         // </div>`
         // status.renderJobs()
         // })
-    }
+    
 
      renderJobs() {
         this.jobs.forEach(job => {
