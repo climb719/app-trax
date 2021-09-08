@@ -11,7 +11,10 @@ class Status {
 
     static getStatuses() {
         api.getStatuses().then(statuses => {
-        statuses.forEach(status => new Status(status))
+        statuses.forEach(status => {
+            new Status(status) 
+            status.jobs.forEach(job => new Job(job)) 
+        })
         this.renderDivs()
      })
     } 
@@ -22,24 +25,24 @@ class Status {
         const addJob = document.createElement("button")
         addJob.innerText = "Add a New Job"
         main.append(statusDiv, addJob)
-        
         this.all.forEach(status => { 
             statusDiv.innerHTML += `
              <div class= "status-card" id=${status.id}> 
              <p class= "name"> ${status.name}</p>
              </div>`
             status.renderJobs()
+            
         })
         addJob.addEventListener('click', event => {
                 console.log(event.target)
-            })
+        })
     }
 
     renderJobs() {
         this.jobs.forEach(job => {
-        const newJob = new Job(job);       
+        const newJob = new Job(job) 
         newJob.renderOptions()  
         })
-     } 
+    } 
 
 }

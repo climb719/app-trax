@@ -23,7 +23,6 @@ class Job {
     }
 
     render = () => {
-      console.log(this)
         const {title, company, notes, appDate, link, statusName, id, StatusId} = this
         let n = this.statusId
         document.getElementById(n).innerHTML += `
