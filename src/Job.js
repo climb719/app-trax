@@ -54,14 +54,16 @@ class Job {
     showDetails = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
       document.getElementById("main").innerHTML = `
-      <div class ="details">
+      <div class ="details-container">
       <h2>${title}</h2>
       <h3>${company}</h3>
-      <p>${notes}</p>
-      <p>${appDate}</p>
+      <p class="notes">${notes}</p>
+      <p class="date">${appDate}</p>
       <a href="${link}">More application details</a>
-      </div>`
-      console.log(`${link}`)
+      </div>
+      <p><button id="edit"> Edit my details </button></p>
+      <p><button id="back"> Back </button></p>`
+      
     }
 
     // static getJobs() {
