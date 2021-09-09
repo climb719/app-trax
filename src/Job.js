@@ -104,7 +104,11 @@ class Job {
       notes: e.target.notes.value,
       link: e.target.link.value
    }
-   api.createJobApp(newApp).then(console.log)
+   api.createJobApp(newApp).then(job => {
+      new Job(job).render()
+   })
+   e.target.reset()
+   modal.close()
   }
 
 
