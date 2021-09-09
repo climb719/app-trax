@@ -67,20 +67,27 @@ class Job {
 
     static addJob = (e) => {
       modal.open()
-   
+      this.openNewJobForm()
+      document.getElementById("close").addEventListener('click', e => {
+        console.log(e.target)
+    })
    }
 
    static openNewJobForm = () => {
-  
-    modal.innerHTML = `<form>
-    <label for="title">Job Title:</label><br>
+ 
+    const form = document.getElementById("modal-content")
+    form.innerHTML += `
+    <h2> Add A New Job App</h2>
+    <form>
+    <label for="title">Job Title:</label>
     <input type="text" name="title""><br>
-    <label for="company">Last name:</label><br>
-    <input type="text" name="company">
-    <label for="notes">Notes:</label><br>
-    <input type="textArea" name="notes">
+    <label for="company">Company:</label>
+    <input type="text" name="company"><br>
+    <label for="notes">Notes:</label>
+    <input textarea id="notes" name="notes" rows="4" cols="50">
     <input type="submit"="Add New Job"><br>
-    </form>`
+    </form>
+    `
    }
 
 

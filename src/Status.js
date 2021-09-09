@@ -23,7 +23,6 @@ class Status {
         const statusDiv = document.createElement('div')
         const main = document.getElementById('main')
         const addJob = document.createElement("button")
-     
         addJob.innerText = "Add a New Job"
         addJob.addEventListener('click', Job.addJob)
         main.append(statusDiv, addJob)
