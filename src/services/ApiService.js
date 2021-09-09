@@ -25,4 +25,15 @@ class ApiService {
     //     console.error('Error:', error);
     //   });
 
+    updateJobApp = (editedApp) => {
+        return fetch(this.api + "/jobs", {
+          method: 'PATCH',
+          headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editedApp),
+      })
+      .then(response => response.json())
+    }
+
 }

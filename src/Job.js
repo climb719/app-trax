@@ -80,7 +80,8 @@ class Job {
 
     saveUpdate = (saveBtn) => {
       const div = saveBtn.closest('Div')
-      const noteInput = div.querySelector(".edited-notes").value
+      const noteEdit = div.querySelector(".edited-notes").value
+      const statusEdit = div.querySelector(".edited-status").value
       debugger
     }
 
