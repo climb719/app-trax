@@ -51,12 +51,12 @@ class Job {
       <p class="notes">${notes}</p>
       <p class="date">${appDate}</p>
       <a href="${link}" target="_blank"> More application details</a>
-      <span id="buttons">
+    
       <p><button id="edit">Edit</button></p>
       <p><button id="back"> Back </button></p>
-      </span>
       </div>`
-      document.getElementById("buttons").addEventListener('click', this.handleShowClick)
+      
+      document.getElementById("details-container").addEventListener('click', this.handleShowClick)
     }
 
     handleShowClick = (e) => {
@@ -67,12 +67,13 @@ class Job {
       }  
       else if (e.target.innerText == "Edit") {
         console.log("edit it!!")
-          this.createEditOptions(e.target)
+          this.renderEdit(e.target)
       }
     }
 
-    createEditOptions = (editBtn) => {
-      debugger
+    renderEdit = (editBtn) => {
+    const div = editBtn.closest('Div')
+    debugger 
     }
 
    static handleJobForm = () => {
