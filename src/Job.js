@@ -65,18 +65,12 @@ class Job {
       }
     }
 
-    static addJob = (e) => {
-      modal.open()
-      this.openNewJobForm()
-      document.getElementById("close").addEventListener('click', e => {
-        console.log(e.target)
-    })
-   }
 
-   static openNewJobForm = () => {
- 
-    const form = document.getElementById("modal-content")
-    form.innerHTML += `
+
+   static handleJobForm = () => {
+    modal.open()
+    const form = document.getElementById("modal-text")
+    form.innerHTML = `
     <h2> Add A New Job App</h2>
     <form>
     <label for="title">Job Title:</label>
@@ -88,6 +82,8 @@ class Job {
     <input type="submit"="Add New Job"><br>
     </form>
     `
+  document.getElementById("close").addEventListener('click', e => {
+    modal.close() })
    }
 
 

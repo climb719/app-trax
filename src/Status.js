@@ -24,7 +24,7 @@ class Status {
         const main = document.getElementById('main')
         const addJob = document.createElement("button")
         addJob.innerText = "Add a New Job"
-        addJob.addEventListener('click', Job.addJob)
+        addJob.addEventListener('click', Job.openNewJobForm)
         main.append(statusDiv, addJob)
         this.all.forEach(status => { 
             statusDiv.innerHTML += `
