@@ -50,7 +50,7 @@ class Job {
       <h3>${company}</h3>
       <p class="notes">${notes}</p>
       <p class="date">${appDate}</p>
-      <a href="${link}">More application details</a>
+      <a href="${link}" target="_blank">More application details</a>
       </div>
       <p><button id="edit"> Edit my details </button></p>
       <p><button id="back"> Back </button></p>`
@@ -110,7 +110,5 @@ class Job {
    e.target.reset()
    modal.close()
   }
-
-
 
 }

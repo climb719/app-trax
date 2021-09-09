@@ -1,7 +1,5 @@
 class Modal {
 
-   
-
     get modal() {
         return document.getElementById("myModal")
     }
@@ -13,6 +11,5 @@ class Modal {
     close = () => {
         this.modal.style.display = "none"
     }
-
-
+    
 }
