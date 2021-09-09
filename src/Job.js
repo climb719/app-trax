@@ -70,23 +70,30 @@ class Job {
    static handleJobForm = () => {
     modal.open()
     const form = document.getElementById("modal-text")
+
     form.innerHTML = `
-    <h2> Add A New Job App</h2>
-    <form>
-    <label for="title">Job Title:</label>
-    <input type="text" name="title""><br>
-    <label for="company">Company:</label>
-    <input type="text" name="company"><br>
-    <label for="notes">Notes:</label>
-    <input textarea id="notes" name="notes" rows="4" cols="50">
-    <input type="submit"="Add New Job"><br>
-    </form>
-    `
-  document.getElementById("close").addEventListener('click', e => {
+      <h2> Add A New Job App</h2>
+      Title: <input type="text" name="title" required="true">
+      Company: <input type="text" name="company" required="true">
+      Select your application status:<select name="statusName" id="statusId">
+      <option></option>
+      <option value="apply">To Apply</option>
+      <option value="applied">Applied</option>
+      <option value="phone">Phone Inteview</option>
+      <option value="next">Next Round</option>
+      <option value="offer">Offer</option>
+      </select>
+      Date:<input type="date" name="date" required="true"><br>
+      <br>
+      My notes about the job or application process:<br>
+      <textarea rows="15" cols ="50" required="true" name="notes"></textarea><br>
+      <br>
+      Link to App Posting:<input type="text" name="link" required="true"> <br>
+      <br>
+      <input type="submit" value="Add My Job App">
+      </form>`
+    document.getElementById("close").addEventListener('click', e => {
     modal.close() })
    }
-
-
-   
 
 }
