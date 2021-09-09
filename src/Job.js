@@ -14,6 +14,10 @@ class Job {
         this.constructor.all.push(this)
     }
 
+    test = () => {
+      console.log("testing!!")
+    }
+
     addCardEvents = () => { 
       const statusDivs =  document.getElementsByClassName("status-card")
       Array.from(statusDivs).forEach(element => {
@@ -51,11 +55,9 @@ class Job {
       <p class="notes">${notes}</p>
       <p class="date">${appDate}</p>
       <a href="${link}" target="_blank"> More application details</a>
-    
       <p><button id="edit">Edit</button></p>
       <p><button id="back"> Back </button></p>
       </div>`
-      
       document.getElementById("details-container").addEventListener('click', this.handleShowClick)
     }
 
@@ -66,14 +68,14 @@ class Job {
         Status.renderDivs() 
       }  
       else if (e.target.innerText == "Edit") {
-        console.log("edit it!!")
+        console.log("edit me!!")
           this.renderEdit(e.target)
       }
     }
 
     renderEdit = (editBtn) => {
     const div = editBtn.closest('Div')
-    debugger 
+    //debugger 
     }
 
    static handleJobForm = () => {

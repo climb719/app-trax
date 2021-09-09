@@ -4,9 +4,10 @@ class Status {
 
     constructor({id, name, jobs}) {
         this.id = id
-        this.name = name
-        this.jobs = jobs
+        this.name = name 
+        this.jobs = jobs.map(job => new Job(job))
         this.constructor.all.push(this)
+       // debugger
     }
 
     static getStatuses() {
@@ -31,15 +32,15 @@ class Status {
              <div class= "status-card" id=${status.id}> 
              <p class= "name"> ${status.name}</p>
              </div>`
+             //debugger
             status.renderJobs()    
         })
+      // debugger
     }
     
     renderJobs() {
-        this.jobs.forEach(job => {
-        const newJob = new Job(job) 
-        newJob.addCardEvents()  
-        })
+       // debugger
+        this.jobs.forEach(job => job.addCardEvents())
     } 
 
 }
