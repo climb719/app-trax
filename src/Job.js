@@ -52,16 +52,21 @@ class Job {
       <p class="date">${appDate}</p>
       <a href="${link}" target="_blank"> More application details</a>
       </div>
+      <div id="buttons">
       <p><button id="edit"> Edit my details </button></p>
-      <p><button id="back"> Back </button></p>`
-      document.getElementById("back").addEventListener('click', this.handleShowClick)
+      <p><button id="back"> Back </button></p>
+      </div>`
+      document.getElementById("buttons").addEventListener('click', this.handleShowClick)
     }
 
     handleShowClick = (e) => {
       if (e.target.id == "back") {
         const main = document.getElementById("main")
         main.innerHTML = ''
-        Status.renderDivs()
+        Status.renderDivs() 
+      }  
+      else if (e.target.id == "edit") {
+          console.log("edit it!!") 
       }
     }
 

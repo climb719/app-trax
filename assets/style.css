@@ -23,15 +23,16 @@ body {
 .job-card {
     display: grid;
     background-color: whitesmoke;
-    padding: 20px;
+    padding: 10px;
     border-radius: 25px;
     border: 3px solid teal;
     text-align: center;
+    margin-bottom: 1em;
     
 }
 
 .job-card .title {
-    font-size: 1.25em;
+    font-size: 1em;
     /* font-family: ; */
     color: blue;
     cursor: pointer;
