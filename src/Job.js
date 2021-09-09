@@ -72,14 +72,24 @@ class Job {
         console.log("edit me!!")
           this.renderEdit(e.target)
       }
+      else if (e.target.innerText == "Save") {
+        console.log("save me!!")
+        this.saveUpdate(e.target)
+    }
+  }
+
+    saveUpdate = (saveBtn) => {
+      const div = saveBtn.closest('Div')
+      const noteInput = div.querySelector(".edited-notes").value
+      debugger
     }
 
     renderEdit = (editBtn) => {
     const div = editBtn.closest('Div')
     const note = div.children.item(3)
-    note.innerHTML = `Update your notes:<br> <textarea rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
+    note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
     const status = div.children.item(2)
-    status.innerHTML = `Update your application status:<select name="status" id="status_id">
+    status.innerHTML = `Update your application status:<select class= "edited-status"  name="status" id="status_id">
     <option></option>
     <option value=1>To Apply</option>
     <option value=2>Applied</option>
@@ -88,6 +98,8 @@ class Job {
     <option value=5>Offer</option>
     </select>`
     editBtn.innerText = "Save"
+    // const backToShow = document.getElementsById("back")
+    // backToShow.remove()
     }
 
    static handleJobForm = () => {
