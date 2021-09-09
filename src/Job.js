@@ -45,16 +45,16 @@ class Job {
     showDetails = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
       document.getElementById("main").innerHTML = `
-      <div class ="details-container">
+      <div id ="details-container">
       <h2>${title}</h2>
       <h3>${company}</h3>
       <p class="notes">${notes}</p>
       <p class="date">${appDate}</p>
       <a href="${link}" target="_blank"> More application details</a>
-      </div>
-      <div id="buttons">
-      <p><button id="edit"> Edit my details </button></p>
+      <span id="buttons">
+      <p><button id="edit">Edit</button></p>
       <p><button id="back"> Back </button></p>
+      </span>
       </div>`
       document.getElementById("buttons").addEventListener('click', this.handleShowClick)
     }
@@ -65,9 +65,14 @@ class Job {
         main.innerHTML = ''
         Status.renderDivs() 
       }  
-      else if (e.target.id == "edit") {
-          console.log("edit it!!") 
+      else if (e.target.innerText == "Edit") {
+        console.log("edit it!!")
+          this.createEditOptions(e.target)
       }
+    }
+
+    createEditOptions = (editBtn) => {
+      debugger
     }
 
    static handleJobForm = () => {
