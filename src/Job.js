@@ -74,11 +74,11 @@ class Job {
       Company: <input type="text" name="company">
       Select your application status:<select name="status" id="status_id">
       <option></option>
-      <option value="apply">To Apply</option>
-      <option value="applied">Applied</option>
-      <option value="phone">Phone Inteview</option>
-      <option value="next">Next Round</option>
-      <option value="offer">Offer</option>
+      <option value=1>To Apply</option>
+      <option value=2>Applied</option>
+      <option value=3>Phone Inteview</option>
+      <option value=4>Next Round</option>
+      <option value=5>Offer</option>
       </select>
       Date:<input type="date" name="date"><br>
       <br>
@@ -99,12 +99,12 @@ class Job {
     const newApp = {
       title: e.target.title.value,
       company: e.target.company.value,
-      status: e.target.status.value,
+      status_id: e.target.status.value,
       date: e.target.date.value,
       notes: e.target.notes.value,
       link: e.target.link.value
    }
-   console.log(newApp)
+   api.createJobApp(newApp).then(console.log)
   }
 
 

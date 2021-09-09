@@ -8,18 +8,21 @@ class ApiService {
 
     getStatuses = () => fetch(this.api + "/statuses").then(resp => resp.json())
 
-    createJobApp = (newApp) => fetch(this.api + "/jobs", {
-        method: 'POST',
-        headers: {
+    createJobApp = (newApp) => {
+        return fetch(this.api + "/jobs", {
+          method: 'POST',
+          headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(newApp),
       })
       .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
-      })
+    }
+    //   .then(data => {
+    //     console.log('Success:', data);
+    //   })
     //   .catch((error) => {
     //     console.error('Error:', error);
     //   });
+
 }
