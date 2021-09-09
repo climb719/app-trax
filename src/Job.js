@@ -50,8 +50,9 @@ class Job {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
       document.getElementById("main").innerHTML = `
       <div id ="details-container">
-      <h2>${title}</h2>
-      <h3>${company}</h3>
+      <h1>${title}</h1>
+      <h2>Company: ${company}</h2>
+      <h3>Status: ${statusName}</h3>
       <p class="notes">${notes}</p>
       <p class="date">${appDate}</p>
       <a href="${link}" target="_blank"> More application details</a>
@@ -75,8 +76,18 @@ class Job {
 
     renderEdit = (editBtn) => {
     const div = editBtn.closest('Div')
-    const note = div.children.item(2)
-    note.innerHTML = `<textarea rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
+    const note = div.children.item(3)
+    note.innerHTML = `Update your notes:<br> <textarea rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
+    const status = div.children.item(2)
+    status.innerHTML = `Update your application status:<select name="status" id="status_id">
+    <option></option>
+    <option value=1>To Apply</option>
+    <option value=2>Applied</option>
+    <option value=3>Phone Inteview</option>
+    <option value=4>Next Round</option>
+    <option value=5>Offer</option>
+    </select>`
+    editBtn.innerText = "Save"
     }
 
    static handleJobForm = () => {
