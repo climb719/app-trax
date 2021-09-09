@@ -7,14 +7,12 @@ class Status {
         this.name = name 
         this.jobs = jobs.map(job => new Job(job))
         this.constructor.all.push(this)
-       // debugger
     }
 
     static getStatuses() {
         api.getStatuses().then(statuses => {
         statuses.forEach(status => {
             new Status(status) 
-           // status.jobs.forEach(job => new Job(job)) 
         })
         this.renderDivs()
      })
@@ -32,15 +30,14 @@ class Status {
              <div class= "status-card" id=${status.id}> 
              <p class= "name"> ${status.name}</p>
              </div>`
-             //debugger
-            status.renderJobs()    
+            status.jobs.forEach(job => job.addCardEvents())
+            //renderJobs()    
+            //debugger
         })
-      // debugger
     }
     
-    renderJobs() {
-       // debugger
-        this.jobs.forEach(job => job.addCardEvents())
-    } 
+    // renderJobs() {
+    //     this.jobs.forEach(job => job.addCardEvents())
+    // } 
 
 }

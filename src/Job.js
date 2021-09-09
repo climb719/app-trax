@@ -75,7 +75,8 @@ class Job {
 
     renderEdit = (editBtn) => {
     const div = editBtn.closest('Div')
-    //debugger 
+    const note = div.children.item(2)
+    note.innerHTML = `<textarea rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
     }
 
    static handleJobForm = () => {
