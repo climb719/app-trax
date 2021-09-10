@@ -2,8 +2,9 @@ class Job {
 
     static all = []
   
-    constructor({id, title, company, notes, appDate, link, statusName, statusId}) {
+    constructor({id, title, company, notes, appDate, link, statusName, statusId, job}) {
         this.id = id;
+        this.job =
         this.title = title;
         this.company = company;
         this.notes = notes;
@@ -14,9 +15,7 @@ class Job {
         this.constructor.all.push(this)
     }
 
-    test = () => {
-      console.log("testing!!")
-    }
+  
 
     addCardEvents = () => { 
       const statusDivs =  document.getElementsByClassName("status-card")
@@ -54,7 +53,7 @@ class Job {
       <div id ="details-container">
       <h1 id=${id}>${title}</h1>
       <h2>Company: ${company}</h2>
-      <h3>Status: ${statusName}</h3>
+      <h3>${statusName}</h3>
       <p class="notes">${notes}</p>
       <p class="date">${appDate}</p>
       <a href="${link}" target="_blank"> More application details</a>
@@ -92,11 +91,11 @@ class Job {
         notes: noteEdit 
       }
       api.updateJobApp(updatedJob).then(updatedJob => {
-      console.log(updatedJob.id)
-      console.log(id)
-      console.log(this.find(id))
       console.log(updatedJob)
-      this.find(id).showDetails()
+      console.log(this.find(id))
+      new Job(updatedJob).showDetails()
+      // console.log(this.find(id))
+      // this.find(id).showDetails()
       })
     }
 
@@ -106,8 +105,9 @@ class Job {
     const id = div.children.item(0).id
     note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
     const status = div.children.item(2)
-    status.innerHTML = `Update your application status:<select class= "edited-status"  name="status" id="status_id">
-    <option></option>
+  //  debugger
+    status.innerHTML = `Update your application status:<select required class= "edited-status"  name="status" id="status_id">
+    <option selected disabled value="">Please Select</option>
     <option value=1>To Apply</option>
     <option value=2>Applied</option>
     <option value=3>Phone Inteview</option>
@@ -117,6 +117,7 @@ class Job {
     <input type="hidden" id="job-id" value=${id}>`
     editBtn.innerText = "Save"
     }
+    //selected="selected"><strong>${status.innerText}<strong>
 
     deleteJob = (deleteBtn) => {
       const div = deleteBtn.closest('Div')
