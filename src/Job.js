@@ -48,6 +48,7 @@ class Job {
 
     showDetails = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
+      console.log(this)
       document.getElementById("main").innerHTML = `
       <div id ="details-container">
       <h1 id=${id}>${title}</h1>
@@ -74,11 +75,11 @@ class Job {
       }
       else if (e.target.innerText == "Save") {
         console.log("save me!!")
-        this.saveUpdate(e.target)
+       Job.saveUpdate(e.target)
     }
   }
 
-    saveUpdate = (saveBtn) => {
+   static saveUpdate = (saveBtn) => {
       const div = saveBtn.closest('Div')
       const noteEdit = div.querySelector(".edited-notes").value
       const statusEdit = div.querySelector(".edited-status").value
@@ -89,7 +90,11 @@ class Job {
         status_id: statusEdit,
         notes: noteEdit 
       }
-      api.updateJobApp(updatedJob).then(updatedJob => {debugger})
+      api.updateJobApp(updatedJob).then(updatedJob => {
+      console.log(updatedJob)
+      console.log(this)
+        this.find(id).showDetails()
+      })
     }
 
     renderEdit = (editBtn) => {
