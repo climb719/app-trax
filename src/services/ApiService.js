@@ -25,13 +25,14 @@ class ApiService {
     //     console.error('Error:', error);
     //   });
 
-    updateJobApp = (editedApp) => {
-        return fetch(this.api + "/jobs/${id}", {
+    updateJobApp = (updatedJob) => {
+      //debugger
+        return fetch(`${this.api}/jobs/${updatedJob.id}`, {
           method: 'PATCH',
           headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(editedApp),
+        body: JSON.stringify(updatedJob),
       })
       .then(response => response.json())
     }

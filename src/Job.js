@@ -83,7 +83,13 @@ class Job {
       const noteEdit = div.querySelector(".edited-notes").value
       const statusEdit = div.querySelector(".edited-status").value
       const id = div.querySelector("#job-id").value
-      debugger
+     // debugger
+      const updatedJob = {
+        id: id,
+        status_id: statusEdit,
+        notes: noteEdit 
+      }
+      api.updateJobApp(updatedJob).then(updatedJob => {debugger})
     }
 
     renderEdit = (editBtn) => {
@@ -100,7 +106,7 @@ class Job {
     <option value=4>Next Round</option>
     <option value=5>Offer</option>
     </select>
-   <input type="hidden" id="job-id" value=${id}>`
+    <input type="hidden" id="job-id" value=${id}>`
     editBtn.innerText = "Save"
     // const backToShow = document.getElementsById("back")
     // backToShow.remove()
