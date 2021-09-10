@@ -26,7 +26,7 @@ class ApiService {
     //   });
 
     updateJobApp = (editedApp) => {
-        return fetch(this.api + "/jobs", {
+        return fetch(this.api + "/jobs/${id}", {
           method: 'PATCH',
           headers: {
           'Content-Type': 'application/json',

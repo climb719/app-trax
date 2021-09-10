@@ -30,7 +30,7 @@ class Job {
         const {title, company, notes, appDate, link, statusName, id, StatusId} = this
         let n = this.statusId
         document.getElementById(n).innerHTML += `
-        <div class="job-card" data-id=${n}>
+        <div class="job-card" data-job-id=${id}>
         <p class="title">${title}</p>
         <p clss="company">${company}</p>
         <p clss="date">${appDate}</p>
@@ -39,7 +39,7 @@ class Job {
 
     static handleCardClick = (e) => {
       if (e.target.classList.contains("title")) {
-        const id = e.target.closest(".job-card").dataset.id
+        const id = e.target.closest(".job-card").dataset.jobId
         this.find(id).showDetails()
       }
     }
@@ -50,7 +50,7 @@ class Job {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
       document.getElementById("main").innerHTML = `
       <div id ="details-container">
-      <h1>${title}</h1>
+      <h1 id=${id}>${title}</h1>
       <h2>Company: ${company}</h2>
       <h3>Status: ${statusName}</h3>
       <p class="notes">${notes}</p>
@@ -82,12 +82,14 @@ class Job {
       const div = saveBtn.closest('Div')
       const noteEdit = div.querySelector(".edited-notes").value
       const statusEdit = div.querySelector(".edited-status").value
+      const id = div.querySelector("#job-id").value
       debugger
     }
 
     renderEdit = (editBtn) => {
     const div = editBtn.closest('Div')
     const note = div.children.item(3)
+    const id = div.children.item(0).id
     note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
     const status = div.children.item(2)
     status.innerHTML = `Update your application status:<select class= "edited-status"  name="status" id="status_id">
@@ -97,7 +99,8 @@ class Job {
     <option value=3>Phone Inteview</option>
     <option value=4>Next Round</option>
     <option value=5>Offer</option>
-    </select>`
+    </select>
+   <input type="hidden" id="job-id" value=${id}>`
     editBtn.innerText = "Save"
     // const backToShow = document.getElementsById("back")
     // backToShow.remove()
@@ -108,7 +111,7 @@ class Job {
     const form = document.getElementById("modal-text")
     form.innerHTML = `
       <h2> Add A New Job App</h2> <form id="create-form">
-      Title: <input type="text" name="title">
+      Title: <input type="text" name="title" >
       Company: <input type="text" name="company">
       Select your application status:<select name="status" id="status_id">
       <option></option>
