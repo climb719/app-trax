@@ -31,10 +31,10 @@ class Job {
         let n = this.statusId
         document.getElementById(n).innerHTML += `
         <div class="job-card" data-job-id=${id}>
-        <span class="close">&times;</span>
+        <span class="close" data-id=${id}>&times;</span>
         <p class="title">${title}</p>
-        <p clss="company">${company}</p>
-        <p clss="date">${appDate}</p>
+        <p class="company">${company}</p>
+        <p class="date">${appDate}</p>
         </div>`
     }
 
@@ -60,7 +60,6 @@ class Job {
       <a href="${link}" target="_blank"> More application details</a>
       <p><button id="edit">Edit</button></p>
       <p><button id="back">Back</button></p>
-      <p><button id="delete">Delete</button></p>
       </div>`
       document.getElementById("details-container").addEventListener('click', this.handleShowClick)
     }
@@ -79,10 +78,6 @@ class Job {
         console.log("save me!!")
        Job.saveUpdate(e.target)
     }
-  //     else if (e.target.id == "delete") {
-  //     console.log("delete me!!")
-  //    this.deleteJob(e.target)
-  // }
   }
 
    static saveUpdate = (saveBtn) => {
@@ -97,7 +92,6 @@ class Job {
         notes: noteEdit 
       }
       api.updateJobApp(updatedJob).then(updatedJob => {
-     
       console.log(updatedJob.id)
       console.log(id)
       console.log(this.find(id))
@@ -122,8 +116,6 @@ class Job {
     </select>
     <input type="hidden" id="job-id" value=${id}>`
     editBtn.innerText = "Save"
-    // const backToShow = document.getElementsById("back")
-    // backToShow.remove()
     }
 
     deleteJob = (deleteBtn) => {
