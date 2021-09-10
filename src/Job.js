@@ -21,6 +21,7 @@ class Job {
       const statusDivs =  document.getElementsByClassName("status-card")
       Array.from(statusDivs).forEach(element => {
         element.addEventListener('click', Job.handleCardClick)
+        
       })
       this.render()  
     }
@@ -28,13 +29,27 @@ class Job {
     render = () => {
         const {title, company, notes, appDate, link, statusName, id, StatusId} = this
         let n = this.statusId
-        document.getElementById(n).innerHTML += `
+        console.log(this)
+       const statusCard = document.getElementById(n)
+
+       statusCard.innerHTML += `
         <div class="job-card" data-job-id=${id}>
-        <span class="close" data-id=${id}>&times;</span>
+       <button class="close" data-id=${id}>&times;</button>
         <p class="title">${title}</p>
         <p class="company">${company}</p>
         <p class="date">${appDate}</p>
         </div>`
+        const jobCard = statusCard.children[1]
+        const closeBtn =  jobCard.querySelector(".close")
+       console.log(closeBtn)
+      //debugger
+        closeBtn.addEventListener('click', event => {
+            console.log(event)
+          })
+    }
+
+    handleDelete = (e) => {
+      console.log(e.target)
     }
 
     static handleCardClick = (e) => {

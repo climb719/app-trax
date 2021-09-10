@@ -18,9 +18,6 @@ class ApiService {
       })
       .then(response => response.json())
     }
-    //   .then(data => {
-    //     console.log('Success:', data);
-    //   })
     //   .catch((error) => {
     //     console.error('Error:', error);
     //   });
@@ -36,5 +33,8 @@ class ApiService {
       })
       .then(response => response.json())
     }
+      //   .catch((error) => {
+    //     console.error('Error:', error);
+    //   });
 
 }
