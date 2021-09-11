@@ -32,12 +32,13 @@ class Job {
        const statusCard = document.getElementById(n)
       // console.log(statusCard)
        statusCard.innerHTML += `
-        <div class="job-card" data-job-id=${id}>
+        <div class="job-card" data-job-id=${id} id=card-${id}>
        <button class="close" data-id=${id}>&times;</button>
         <p class="title">${title}</p>
         <p class="company">${company}</p>
         <p class="date">${appDate}</p>
         </div>`
+    
     }
 
     // const jobCards = statusCards.children[1]
@@ -95,7 +96,7 @@ class Job {
     }
     else if (e.target.id == "delete") {
           console.log("delete me!!")
-      //    this.deleteJob(e.target)
+      this.deleteJob(e.target)
   }
 }
 
@@ -142,7 +143,13 @@ class Job {
     deleteJob = (deleteBtn) => {
       const div = deleteBtn.closest('Div')
       const id =  div.children.item(0).id
-      //debugger
+   
+     //debugger
+      const main = document.getElementById("main")
+      main.innerHTML = ''
+      Status.renderDivs() 
+     document.getElementById(`card-${id}`).remove()
+    
     }
 
    static handleJobForm = () => {
