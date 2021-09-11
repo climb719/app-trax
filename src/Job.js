@@ -96,7 +96,10 @@ class Job {
   }
   else if (e.target.id == "delete") {
         console.log("delete me!!")
-    this.deleteJob(e.target)
+        if (confirm("Are you sure you want to delete this job?")) {
+          this.deleteJob(e.target)
+        }
+    
 }
 }
 
