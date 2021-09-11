@@ -29,9 +29,8 @@ class Job {
     render = () => {
         const {title, company, notes, appDate, link, statusName, id, StatusId} = this
         let n = this.statusId
-        console.log(this)
        const statusCard = document.getElementById(n)
-
+      // console.log(statusCard)
        statusCard.innerHTML += `
         <div class="job-card" data-job-id=${id}>
        <button class="close" data-id=${id}>&times;</button>
@@ -39,14 +38,15 @@ class Job {
         <p class="company">${company}</p>
         <p class="date">${appDate}</p>
         </div>`
-        const jobCard = statusCard.children[1]
-        const closeBtn =  jobCard.querySelector(".close")
-       console.log(closeBtn)
-      //debugger
-        closeBtn.addEventListener('click', event => {
-            console.log(event)
-          })
     }
+
+    // const jobCards = statusCards.children[1]
+    // const closeBtn =  jobCards.querySelector(".close")
+    // console.log(closeBtn)
+    // closeBtn.addEventListener('click', event => {
+    //         console.log(event)
+    //     })
+   
 
     handleDelete = (e) => {
       console.log(e.target)
@@ -74,6 +74,7 @@ class Job {
       <a href="${link}" target="_blank"> More application details</a>
       <p><button id="edit">Edit</button></p>
       <p><button id="back">Back</button></p>
+      <p><button id="delete">Delete</button></p>
       </div>`
       document.getElementById("details-container").addEventListener('click', this.handleShowClick)
     }
@@ -92,7 +93,11 @@ class Job {
         console.log("save me!!")
        Job.saveUpdate(e.target)
     }
+    else if (e.target.id == "delete") {
+          console.log("delete me!!")
+      //    this.deleteJob(e.target)
   }
+}
 
    static saveUpdate = (saveBtn) => {
       const div = saveBtn.closest('Div')
