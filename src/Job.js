@@ -81,14 +81,12 @@ class Job {
   }
 
   handleShowClick = (e) => {
-    if (e.target.innerText == "Back") {
-      console.log("back")
+    if (e.target.id == "back") {
       const main = document.getElementById("main")
-      //debugger
       main.innerHTML = ''
       Status.renderDivs() 
     }  
-   if (e.target.innerText == "Edit") {
+    else if (e.target.innerText == "Edit") {
       console.log("edit me!!")
         this.renderEdit(e.target)
     }
@@ -114,9 +112,8 @@ class Job {
       notes: noteEdit 
     }
     api.updateJobApp(updatedJob).then(updatedJob => {
-    console.log(updatedJob)
-   // console.log(this.find(id))
-    new Job(updatedJob).showDetails()
+        console.log(Status.all)
+      new Job(updatedJob).showDetails()
     })
   }
 
@@ -137,19 +134,8 @@ class Job {
   </select>
   <input type="hidden" id="job-id" value=${id}>`
   editBtn.innerText = "Save"
-  const backFromEditBtn = document.getElementById("back")
-  backFromEditBtn.innerText = "Go Back To All My Jobs"
-  backFromEditBtn.addEventListener("click", (e) => {
-     // console.log(e.target)
-      this.backFromEdit(e.target)
-  })
   }
   //selected="selected"><strong>${status.innerText}<strong>
-  
-  backFromEdit = (backFromEditBtn) => {
-    console.log("back from edit")
-    console.log(backFromEditBtn)
-  }
 
   deleteJob = (deleteBtn) => {
     const div = deleteBtn.closest('Div')
@@ -208,7 +194,5 @@ class Job {
  e.target.reset()
  modal.close()
 }
-
-
 
 }
