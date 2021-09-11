@@ -142,10 +142,14 @@ class Job {
     const id =  div.children.item(0).id
  
    //debugger
+   
+   api.deleteJob(id).then(() => {
     const main = document.getElementById("main")
     main.innerHTML = ''
     Status.renderDivs() 
-   document.getElementById(`card-${id}`).remove()
+    document.getElementById(`card-${id}`).remove()
+   })
+
   
   }
 

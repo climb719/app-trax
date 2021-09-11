@@ -37,4 +37,12 @@ class ApiService {
     //     console.error('Error:', error);
     //   });
 
+   deleteJob = (id) => {
+      //debugger
+        return fetch(`${this.api}/jobs/${id}`, {
+          method: 'DELETE',
+      })
+      .then(response => response.json())
+    }
+
 }
