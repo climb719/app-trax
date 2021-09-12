@@ -15,13 +15,10 @@ class Job {
       this.constructor.all.push(this)
   }
 
-
-
   addCardEvents = () => { 
     const statusDivs =  document.getElementsByClassName("status-card")
     Array.from(statusDivs).forEach(element => {
       element.addEventListener('click', Job.handleCardClick)
-      
     })
     this.render()  
   }
@@ -30,7 +27,6 @@ class Job {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
       let n = this.statusId
      const statusCard = document.getElementById(n)
-  
      statusCard.innerHTML += `
       <div class="job-card" data-job-id=${id} id=card-${id}>
      <button class="close" data-id=${id}>&times;</button>
@@ -38,7 +34,6 @@ class Job {
       <p class="company">${company}</p>
       <p class="date">${appDate}</p>
       </div>`
-  
   }
 
   // const jobCards = statusCards.children[1]
@@ -47,7 +42,6 @@ class Job {
   // closeBtn.addEventListener('click', event => {
   //         console.log(event)
   //     })
- 
 
   handleDelete = (e) => {
     console.log(e.target)
@@ -82,8 +76,8 @@ class Job {
 
   handleShowClick = (e) => {
     if (e.target.id == "back") {
-      const main = document.getElementById("main")
-      main.innerHTML = ''
+      // const main = document.getElementById("main")
+      // main.innerHTML = ""
       Status.renderDivs() 
     }  
     else if (e.target.innerText == "Edit") {
@@ -93,52 +87,44 @@ class Job {
     else if (e.target.innerText == "Save") {
       console.log("save me!!")
      Job.saveUpdate(e.target)
-  }
-  else if (e.target.id == "delete") {
+    }
+    else if (e.target.id == "delete") {
         console.log("delete me!!")
         if (confirm("Are you sure you want to delete this job?")) {
           this.deleteJob(e.target)
         }
-    
-}
-}
+    }
+  }
 
  static saveUpdate = (saveBtn) => {
     const div = saveBtn.closest('Div')
     const noteEdit = div.querySelector(".edited-notes").value
     const statusEdit = div.querySelector(".edited-status").value
     const id = div.querySelector("#job-id").value
- console.log(statusEdit)
-const title = div.querySelector("h1").value
-console.log(title)
-
-//  console.log(div.querySelector("h2").value)
-//  console.log(div.querySelector(".date").value)
     const updatedJob = {
       id: id,
       status_id: statusEdit,
       notes: noteEdit 
     }
     api.updateJobApp(updatedJob).then(updatedJob => {
-      Status.renderDivs()
-     new Job(updatedJob).render()
-      console.log(updatedJob)
-  
-
+     
+     new Job(updatedJob).showDetails()
+    //  const allJobs = document.getElementById("back")
+    //  allJobs.innerText = "All Jobs"
+    //  allJobs.addEventListener('click', this.allJobsAfterEdit)
     })
   }
 
-
-    // <input type="hidden" id="job-id" value=${id}>`
-  //selected="selected"><strong>${status.innerText}<strong>
+  // static allJobsAfterEdit = (e) => {
+  //   const main = document.getElementById("main")
+  //   main.innerHTML = ''
+  //   Status.renderDivs() 
+  // }
 
   deleteJob = (deleteBtn) => {
     const div = deleteBtn.closest('Div')
     const id =  div.children.item(0).id
- 
-   //debugger
-   
-   api.deleteJob(id).then(() => {
+    api.deleteJob(id).then(() => {
     const main = document.getElementById("main")
     main.innerHTML = ''
     Status.renderDivs() 

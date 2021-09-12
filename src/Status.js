@@ -18,9 +18,11 @@ class Status {
      })
     } 
 
-    static renderDivs() {
-        const statusDiv = document.createElement('div')
+    static renderDivs = () => {
+        
         const main = document.getElementById('main')
+        main.innerHTML = ""
+        const statusDiv = document.createElement('div')
         const addJob = document.createElement("button")
         addJob.innerText = "Add a New Job"
         addJob.addEventListener('click', Job.handleJobForm)
@@ -30,14 +32,17 @@ class Status {
              <div class= "status-card" id=${status.id}> 
              <p class= "name"> ${status.name}</p>
              </div>`
-            status.jobs.forEach(job => job.addCardEvents())
-        //    console.log(status.jobs)  
+             //status.renderJobs()
+        status.jobs.forEach(job => job.addCardEvents())
+    //    console.log(status.jobs)  
             //debugger
         })
     }
     
     // renderJobs() {
-    //     this.jobs.forEach(job => job.addCardEvents())
+    //     this.jobs.forEach(job => {
+    //     const newJob = new Job(job) 
+    //     newJob.addCardEvents()  
+    //     })
     // } 
-
 }
