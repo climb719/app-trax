@@ -31,7 +31,7 @@ class Status {
              <p class= "name"> ${status.name}</p>
              </div>`
             status.jobs.forEach(job => job.addCardEvents())
-            //renderJobs()    
+        //    console.log(status.jobs)  
             //debugger
         })
     }
