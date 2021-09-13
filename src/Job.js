@@ -2,9 +2,8 @@ class Job {
 
   static all = []
 
-  constructor({id, title, company, notes, appDate, link, statusName, statusId}) {
+  constructor({id, title, company, notes, appDate, link, statusName, statusId, job}) {
       this.id = id;
-    
       this.title = title;
       this.company = company;
       this.notes = notes;
@@ -15,18 +14,20 @@ class Job {
       this.constructor.all.push(this)
   }
 
-  addCardEvents = () => { 
-    const statusDivs =  document.getElementsByClassName("status-card")
-    Array.from(statusDivs).forEach(element => {
-      element.addEventListener('click', Job.handleCardClick)
-    })
-    this.render()  
-  }
+
+  // addCardEvents = () => { 
+  //   const statusDivs =  document.getElementsByClassName("status-card")
+  //   Array.from(statusDivs).forEach(element => {
+  //     element.addEventListener('click', Job.handleCardClick) 
+  //   })
+  //   this.render()  
+  // }
 
   render = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
       let n = this.statusId
      const statusCard = document.getElementById(n)
+  
      statusCard.innerHTML += `
       <div class="job-card" data-job-id=${id} id=card-${id}>
      <button class="close" data-id=${id}>&times;</button>
@@ -34,6 +35,7 @@ class Job {
       <p class="company">${company}</p>
       <p class="date">${appDate}</p>
       </div>`
+  
   }
 
   // const jobCards = statusCards.children[1]
@@ -43,9 +45,6 @@ class Job {
   //         console.log(event)
   //     })
 
-  handleDelete = (e) => {
-    console.log(e.target)
-  }
 
   static handleCardClick = (e) => {
     if (e.target.classList.contains("title")) {
@@ -76,9 +75,9 @@ class Job {
 
   handleShowClick = (e) => {
     if (e.target.id == "back") {
-      // const main = document.getElementById("main")
-      // main.innerHTML = ""
-      Status.renderDivs() 
+      const main = document.getElementById("main")
+      main.innerHTML = ''
+      Status.renderMain() 
     }  
     else if (e.target.innerText == "Edit") {
       console.log("edit me!!")
@@ -87,79 +86,78 @@ class Job {
     else if (e.target.innerText == "Save") {
       console.log("save me!!")
      Job.saveUpdate(e.target)
-    }
-    else if (e.target.id == "delete") {
+  }
+  else if (e.target.id == "delete") {
         console.log("delete me!!")
         if (confirm("Are you sure you want to delete this job?")) {
           this.deleteJob(e.target)
         }
-    }
-  }
+    
+}
+}
 
  static saveUpdate = (saveBtn) => {
     const div = saveBtn.closest('Div')
     const noteEdit = div.querySelector(".edited-notes").value
     const statusEdit = div.querySelector(".edited-status").value
     const id = div.querySelector("#job-id").value
+   // debugger
     const updatedJob = {
       id: id,
       status_id: statusEdit,
       notes: noteEdit 
     }
     api.updateJobApp(updatedJob).then(updatedJob => {
-     
-     new Job(updatedJob).showDetails()
-    //  const allJobs = document.getElementById("back")
-    //  allJobs.innerText = "All Jobs"
-    //  allJobs.addEventListener('click', this.allJobsAfterEdit)
+        console.log(Status.all)
+      new Job(updatedJob).showDetails()
     })
   }
 
-  // static allJobsAfterEdit = (e) => {
-  //   const main = document.getElementById("main")
-  //   main.innerHTML = ''
-  //   Status.renderDivs() 
-  // }
+  renderEdit = (editBtn) => {
+  const div = editBtn.closest('Div')
+  const note = div.children.item(3)
+  const id = div.children.item(0).id
+  note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
+  const status = div.children.item(2)
+//  debugger
+  status.innerHTML = `Update your application status:<select required class= "edited-status"  name="status" id="status_id">
+  <option selected disabled value="">Please Select</option>
+  <option value=1>To Apply</option>
+  <option value=2>Applied</option>
+  <option value=3>Phone Inteview</option>
+  <option value=4>Next Round</option>
+  <option value=5>Offer</option>
+  </select>
+  <input type="hidden" id="job-id" value=${id}>`
+  editBtn.innerText = "Save"
+  }
+  //selected="selected"><strong>${status.innerText}<strong>
 
   deleteJob = (deleteBtn) => {
     const div = deleteBtn.closest('Div')
     const id =  div.children.item(0).id
-    api.deleteJob(id).then(() => {
+ 
+   //debugger
+   
+   api.deleteJob(id).then(() => {
     const main = document.getElementById("main")
     main.innerHTML = ''
     Status.renderDivs() 
     document.getElementById(`card-${id}`).remove()
    })
+
+  
   }
 
-  renderEdit = (editBtn) => {
-    const div = editBtn.closest('Div')
-    const id = div.children.item(0).id
-    const status = div.children.item(2)
-    const note = div.children.item(3)
-    note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
-    status.innerHTML = `Update your application status:<select required class= "edited-status"  name="status" id="status_id">
-    <option selected disabled value="">Please Select</option>
-    <option value=1>To Apply</option>
-    <option value=2>Applied</option>
-    <option value=3>Phone Inteview</option>
-    <option value=4>Next Round</option>
-    <option value=5>Offer</option>
-    </select>
-    <input type="hidden" id="job-id" value=${id}>`
-    editBtn.innerText = "Save"
-    }
-  
-
-  static handleJobForm = () => {
-    modal.open()
-    const form = document.getElementById("modal-text")
-    form.innerHTML = `
+ static handleJobForm = () => {
+  modal.open()
+  const form = document.getElementById("modal-text")
+  form.innerHTML = `
     <h2> Add A New Job App</h2> <form id="create-form">
     Title: <input type="text" name="title" >
     Company: <input type="text" name="company">
-    Select your application status:<select required name="status" id="status_id">
-    <option selected disabled value="">Please Select</option>
+    Select your application status:<select name="status" id="status_id">
+    <option></option>
     <option value=1>To Apply</option>
     <option value=2>Applied</option>
     <option value=3>Phone Inteview</option>
@@ -192,7 +190,6 @@ class Job {
  }
  api.createJobApp(newApp).then(job => {
     new Job(job).render()
-    //console.log(job)
  })
  e.target.reset()
  modal.close()

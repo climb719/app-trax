@@ -1,4 +1,4 @@
-class Status {
+  class Status {
 
     static all = []
 
@@ -14,35 +14,45 @@ class Status {
         statuses.forEach(status => {
             new Status(status) 
         })
-        this.renderDivs()
+        this.renderMain()
      })
     } 
 
-    static renderDivs = () => {
-        
+    // static renderDivs() {
+    //     const main = document.getElementById('main')
+    //     const statusDiv = document.createElement('div')
+    //     main.append(statusDiv)
+    //     this.all.forEach(status => { 
+    //         statusDiv.innerHTML += `
+    //          <div class= "status-card" id=${status.id}> 
+    //          <p class= "name"> ${status.name}</p>
+    //          </div>`
+    //         // status.jobs.forEach(job => job.addCardEvents())
+    //     //    console.log(status.jobs)  
+    //         //debugger
+    //     })
+    //     this.renderMain()
+    // }
+
+    static renderMain = () => {
         const main = document.getElementById('main')
-        main.innerHTML = ""
-        const statusDiv = document.createElement('div')
         const addJob = document.createElement("button")
+        const jobContainer = document.createElement('div')
+        jobContainer.id = "job-container"
         addJob.innerText = "Add a New Job"
+        main.append(jobContainer, addJob)
         addJob.addEventListener('click', Job.handleJobForm)
-        main.append(statusDiv, addJob)
+        jobContainer.addEventListener("click", Job.handleCardClick)
+        const statusDiv = document.createElement('div')
+       jobContainer.appendChild(statusDiv)
         this.all.forEach(status => { 
             statusDiv.innerHTML += `
              <div class= "status-card" id=${status.id}> 
              <p class= "name"> ${status.name}</p>
-             </div>`
-             //status.renderJobs()
-        status.jobs.forEach(job => job.addCardEvents())
-    //    console.log(status.jobs)  
-            //debugger
-        })
+             </div>` })
+       this.all.forEach(status => {
+           status.jobs.forEach(job => job.render())
+    })
+
     }
-    
-    // renderJobs() {
-    //     this.jobs.forEach(job => {
-    //     const newJob = new Job(job) 
-    //     newJob.addCardEvents()  
-    //     })
-    // } 
 }
