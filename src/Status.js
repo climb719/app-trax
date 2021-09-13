@@ -36,6 +36,7 @@
 
     static renderMain = () => {
         const main = document.getElementById('main')
+        main.innerHTML = ""
         const addJob = document.createElement("button")
         const jobContainer = document.createElement('div')
         jobContainer.id = "job-container"

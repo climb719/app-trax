@@ -14,15 +14,6 @@ class Job {
       this.constructor.all.push(this)
   }
 
-
-  // addCardEvents = () => { 
-  //   const statusDivs =  document.getElementsByClassName("status-card")
-  //   Array.from(statusDivs).forEach(element => {
-  //     element.addEventListener('click', Job.handleCardClick) 
-  //   })
-  //   this.render()  
-  // }
-
   render = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
       let n = this.statusId
@@ -30,21 +21,12 @@ class Job {
   
      statusCard.innerHTML += `
       <div class="job-card" data-job-id=${id} id=card-${id}>
-     <button class="close" data-id=${id}>&times;</button>
       <p class="title">${title}</p>
       <p class="company">${company}</p>
       <p class="date">${appDate}</p>
       </div>`
   
   }
-
-  // const jobCards = statusCards.children[1]
-  // const closeBtn =  jobCards.querySelector(".close")
-  // console.log(closeBtn)
-  // closeBtn.addEventListener('click', event => {
-  //         console.log(event)
-  //     })
-
 
   static handleCardClick = (e) => {
     if (e.target.classList.contains("title")) {
@@ -75,8 +57,6 @@ class Job {
 
   handleShowClick = (e) => {
     if (e.target.id == "back") {
-      const main = document.getElementById("main")
-      main.innerHTML = ''
       Status.renderMain() 
     }  
     else if (e.target.innerText == "Edit") {
@@ -92,8 +72,7 @@ class Job {
         if (confirm("Are you sure you want to delete this job?")) {
           this.deleteJob(e.target)
         }
-    
-}
+    }
 }
 
  static saveUpdate = (saveBtn) => {
@@ -131,22 +110,17 @@ class Job {
   <input type="hidden" id="job-id" value=${id}>`
   editBtn.innerText = "Save"
   }
-  //selected="selected"><strong>${status.innerText}<strong>
+  //selected="selected">  ${status.innerText}
 
   deleteJob = (deleteBtn) => {
     const div = deleteBtn.closest('Div')
     const id =  div.children.item(0).id
- 
-   //debugger
-   
-   api.deleteJob(id).then(() => {
+    api.deleteJob(id).then(() => {
     const main = document.getElementById("main")
     main.innerHTML = ''
     Status.renderDivs() 
     document.getElementById(`card-${id}`).remove()
    })
-
-  
   }
 
  static handleJobForm = () => {
