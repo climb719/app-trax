@@ -21,7 +21,7 @@ class Status {
     static renderDivs = () => {
         
         const main = document.getElementById('main')
-        main.innerHTML = ""
+      //  main.innerHTML = ""
         const statusDiv = document.createElement('div')
         const addJob = document.createElement("button")
         addJob.innerText = "Add a New Job"

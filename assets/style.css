@@ -19,26 +19,25 @@ body {
   padding: .5em;
 }
 
-  
 .job-card {
-    display: grid;
-    background-color: whitesmoke;
-    padding: 10px;
-    border-radius: 25px;
-    border: 3px solid teal;
-    text-align: center;
-    margin-bottom: 1em;
-    
+  display: grid;
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 25px;
+  border: 3px solid teal;
+  text-align: center;
+  margin-bottom: 1em;
+  
 }
 
 .job-card .title {
-    font-size: 1em;
-    /* font-family: ; */
-    color: blue;
-    cursor: pointer;
-    text-decoration: underline;
-     
-  }
+  font-size: 1em;
+  /* font-family: ; */
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+   
+}
 
 .job-card .close {
   border-radius: 50%;

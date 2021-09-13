@@ -24,16 +24,19 @@ class Job {
   }
 
   render = () => {
-      const {title, company, notes, appDate, link, statusName, id, StatusId} = this
-      let n = this.statusId
-     const statusCard = document.getElementById(n)
-     statusCard.innerHTML += `
-      <div class="job-card" data-id=${n} id=card-${id}>
-      <p class="title">${title}</p>
-      <p class="company">${company}</p>
-      <p class="date">${appDate}</p>
-      </div>`
-  }
+    const {title, company, notes, appDate, link, statusName, id, StatusId} = this
+    let n = this.statusId
+   const statusCard = document.getElementById(n)
+
+   statusCard.innerHTML += `
+   <div class="job-card" data-id=${n} id=card-${id}>
+    <button class="close" data-id=${id}>&times;</button>
+    <p class="title">${title}</p>
+    <p class="company">${company}</p>
+    <p class="date">${appDate}</p>
+    </div>`
+
+}
 
   // const jobCards = statusCards.children[1]
   // const closeBtn =  jobCards.querySelector(".close")
@@ -45,6 +48,7 @@ class Job {
   handleDelete = (e) => {
     console.log(e.target)
   }
+
 
   static handleCardClick = (e) => {
     if (e.target.classList.contains("title")) {
@@ -75,8 +79,8 @@ class Job {
 
   handleShowClick = (e) => {
     if (e.target.id == "back") {
-      const main = document.getElementById("main")
-      main.innerHTML = ""
+      // const main = document.getElementById("main")
+      // main.innerHTML = ""
       Status.renderDivs() 
     }  
     else if (e.target.innerText == "Edit") {
