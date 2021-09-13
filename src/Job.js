@@ -28,8 +28,7 @@ class Job {
       let n = this.statusId
      const statusCard = document.getElementById(n)
      statusCard.innerHTML += `
-      <div class="job-card" data-job-id=${id} id=card-${id}>
-     <button class="close" data-id=${id}>&times;</button>
+      <div class="job-card" data-id=${n} id=card-${id}>
       <p class="title">${title}</p>
       <p class="company">${company}</p>
       <p class="date">${appDate}</p>
@@ -49,7 +48,7 @@ class Job {
 
   static handleCardClick = (e) => {
     if (e.target.classList.contains("title")) {
-      const id = e.target.closest(".job-card").dataset.jobId
+      const id = e.target.closest(".job-card").dataset.id
       this.find(id).showDetails()
     }
   }
@@ -76,8 +75,8 @@ class Job {
 
   handleShowClick = (e) => {
     if (e.target.id == "back") {
-      // const main = document.getElementById("main")
-      // main.innerHTML = ""
+      const main = document.getElementById("main")
+      main.innerHTML = ""
       Status.renderDivs() 
     }  
     else if (e.target.innerText == "Edit") {
