@@ -7,6 +7,7 @@ body {
     font-family: Kaisei Tokumin;
 }
 
+
 .status-card {
   display: inline-table;
   padding: 1em;
@@ -21,13 +22,14 @@ body {
 
 .job-card {
     display: grid;
+    justify-content: space-evenly;
     background-color: whitesmoke;
     padding: 10px;
     border-radius: 25px;
     border: 3px solid teal;
     text-align: center;
     margin-bottom: 1em;
-    
+    width: 200px;
 }
 
 .job-card .title {

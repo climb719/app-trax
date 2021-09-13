@@ -45,7 +45,7 @@
         addJob.addEventListener('click', Job.handleJobForm)
         jobContainer.addEventListener("click", Job.handleCardClick)
         const statusDiv = document.createElement('div')
-       jobContainer.appendChild(statusDiv)
+        jobContainer.appendChild(statusDiv)
         this.all.forEach(status => { 
             statusDiv.innerHTML += `
              <div class= "status-card" id=${status.id}> 
@@ -53,7 +53,6 @@
              </div>` })
        this.all.forEach(status => {
            status.jobs.forEach(job => job.render())
-    })
-
+        })
     }
 }
