@@ -9,6 +9,7 @@ class ApiService {
     getStatuses = () => fetch(this.api + "/statuses").then(resp => resp.json())
 
     createJobApp = (newApp) => {
+        newApp.user_id = user.id
         return fetch(this.api + "/jobs", {
           method: 'POST',
           headers: {

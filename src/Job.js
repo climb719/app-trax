@@ -2,7 +2,8 @@ class Job {
 
   static all = []
 
-  constructor({id, title, company, notes, appDate, link, statusName, statusId, job}) {
+  constructor({id, title, company, notes, appDate, link, statusName, statusId, userId}) {
+      this.userId = userId
       this.id = id;
       this.title = title;
       this.company = company;
@@ -15,10 +16,12 @@ class Job {
   }
 
   render = () => {
+ 
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
+      console.log(this)
       let n = this.statusId
      const statusCard = document.getElementById(n)
-  
+   // console.log(statusId)
      statusCard.innerHTML += `
       <div class="job-card" data-job-id=${id} id=card-${id}>
       <p class="title">${title}</p>
@@ -67,7 +70,7 @@ class Job {
       console.log("save me!!")
      Job.saveUpdate(e.target)
   }
-  else if (e.target.id == "delete") {
+    else if (e.target.id == "delete") {
         console.log("delete me!!")
         if (confirm("Are you sure you want to delete this job?")) {
           this.deleteJob(e.target)
@@ -87,7 +90,7 @@ class Job {
       notes: noteEdit 
     }
     api.updateJobApp(updatedJob).then(updatedJob => {
-        console.log(Status.all)
+        
       new Job(updatedJob).showDetails()
     })
   }

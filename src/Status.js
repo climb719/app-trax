@@ -19,21 +19,6 @@
      })
     } 
 
-    // static renderDivs() {
-    //     const main = document.getElementById('main')
-    //     const statusDiv = document.createElement('div')
-    //     main.append(statusDiv)
-    //     this.all.forEach(status => { 
-    //         statusDiv.innerHTML += `
-    //          <div class= "status-card" id=${status.id}> 
-    //          <p class= "name"> ${status.name}</p>
-    //          </div>`
-    //         // status.jobs.forEach(job => job.addCardEvents())
-    //     //    console.log(status.jobs)  
-    //         //debugger
-    //     })
-    //     this.renderMain()
-    // }
 
     static renderMain = () => {
         const main = document.getElementById('main')
@@ -48,12 +33,17 @@
         const statusDiv = document.createElement('div')
         jobContainer.appendChild(statusDiv)
         this.all.forEach(status => { 
+            //debugger
             statusDiv.innerHTML += `
              <div class= "status-card" id=${status.id}> 
              <p class= "name"> ${status.name}</p>
              </div>` })
        this.all.forEach(status => {
-           status.jobs.forEach(job => job.render())
+           status.jobs.forEach(job => 
+            {console.log(job)
+           debugger
+            })
+            //job.render())
         })
     }
 }
