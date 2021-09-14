@@ -7,6 +7,7 @@
         this.name = name 
         this.jobs = jobs.map(job => new Job(job))
         this.constructor.all.push(this)
+       // debugger
     }
 
     static getStatuses() {
@@ -41,7 +42,8 @@
        this.all.forEach(status => {
            status.jobs.forEach(job => {
              if (job.userId == user.id) {
-                 job.render()
+                 console.log(job)
+                job.render()
             } 
             })
         })

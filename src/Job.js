@@ -16,9 +16,8 @@ class Job {
   }
 
   render = () => {
- 
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
-      console.log(this)
+     // console.log(this)
       let n = this.statusId
      const statusCard = document.getElementById(n)
    // console.log(statusId)
@@ -90,9 +89,10 @@ class Job {
       notes: noteEdit 
     }
     api.updateJobApp(updatedJob).then(updatedJob => {
-        
-      new Job(updatedJob).showDetails()
+        new Job(updatedJob).showDetails()
+        console.log(updatedJob)
     })
+    
   }
 
   renderEdit = (editBtn) => {
