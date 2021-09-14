@@ -19,6 +19,7 @@ class Job {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
      // console.log(this)
       let n = this.statusId
+      console.log(n)
      const statusCard = document.getElementById(n)
    // console.log(statusId)
      statusCard.innerHTML += `
@@ -40,13 +41,13 @@ class Job {
   static find = (id) => this.all.find(job => job.id == id)
 
   showDetails = () => {
-    const {title, company, notes, appDate, link, statusName, id, StatusId} = this
-    //console.log(this)
+    const {title, company, notes, appDate, link, statusName, id, statusId} = this
+ // console.log(this)
     document.getElementById("main").innerHTML = `
     <div id ="details-container">
     <h1 id=${id}>${title}</h1>
     <h2>Company: ${company}</h2>
-    <h3>${statusName}</h3>
+    <h3 id=${statusId}>${statusName}</h3>
     <p class="notes">${notes}</p>
     <p class="date">${appDate}</p>
     <a href="${link}" target="_blank"> More application details</a>
@@ -91,6 +92,7 @@ class Job {
     api.updateJobApp(updatedJob).then(updatedJob => {
         new Job(updatedJob).showDetails()
         console.log(updatedJob)
+        // find id of updated job and replace job in orriginal array with updated job
     })
     
   }
@@ -101,9 +103,10 @@ class Job {
   const id = div.children.item(0).id
   note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
   const status = div.children.item(2)
-//  debugger
+  const statusId = div.children.item(2).id
+
   status.innerHTML = `Update your application status:<select required class= "edited-status"  name="status" id="status_id">
-  <option selected disabled value="">Please Select</option>
+  <option id="selected-status" selected value=${statusId}>${status.innerText}</option>
   <option value=1>To Apply</option>
   <option value=2>Applied</option>
   <option value=3>Phone Inteview</option>
@@ -111,7 +114,17 @@ class Job {
   <option value=5>Offer</option>
   </select>
   <input type="hidden" id="job-id" value=${id}>`
+  // const statusSelect = document.getElementById("status_id")
+ 
+  // for (let i=0; i < statusSelect.length; i++) {
+  //   if (statusSelect.options[i].value == statusId)
+  //     statusSelect.remove(i)
+  //   }
+    
   editBtn.innerText = "Save"
+ 
+
+ //debugger
   }
   //selected="selected">  ${status.innerText}
 
