@@ -39,11 +39,16 @@
              <p class= "name"> ${status.name}</p>
              </div>` })
        this.all.forEach(status => {
-           status.jobs.forEach(job => 
-            {console.log(job)
-           debugger
+           status.jobs.forEach(job => {
+             if (job.userId == user.id) {
+                 job.render()
+            } 
             })
-            //job.render())
         })
+
     }
+
 }
+
+
+
