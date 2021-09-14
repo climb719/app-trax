@@ -6,7 +6,7 @@
 
 const api = new ApiService("http://localhost:3000")
 const modal = new Modal()
-
+let user
 // api.getJobs().then(console.log)
 //Status.getStatuses()
 //Job.getJobs()
@@ -14,8 +14,11 @@ const modal = new Modal()
 document.querySelector("form").addEventListener("submit", handleUserSubmit)
 
 function handleUserSubmit(e){
+    document.getElementById("main").innerHTML = ""
     e.preventDefault()
-    
-    console.log(e.target.email.value)
+    api.FindOrCreateUser(e.target.email.value).then(userInfo => {
+       user = userInfo
+       Status.getStatuses()
+    })
 }
 
