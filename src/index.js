@@ -15,7 +15,7 @@ document.querySelector("form").addEventListener("submit", handleUserSubmit)
 
 function handleUserSubmit(e){
     e.preventDefault()
-    console.log(e.target.name.value)
+    
     console.log(e.target.email.value)
 }
 

@@ -11,6 +11,7 @@
 
     static getStatuses() {
         api.getStatuses().then(statuses => {
+        Status.all = []
         statuses.forEach(status => {
             new Status(status) 
         })
