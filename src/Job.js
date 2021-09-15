@@ -15,18 +15,6 @@ class Job {
    
   }
 
-
-  //  static renderCards = () => {
-  //    console.log(this.all)
-  //     this.all.forEach(job => {
-  //       job => new Job(job)
-  //       if (job.userId == user.id) {
-  //               // console.log(job)
-  //         job.render()
-  //       } 
-  //     })
-  //   }
-
   render = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
      // console.log(this)
@@ -42,14 +30,6 @@ class Job {
       </div>`
   
   }
-
-
-
-  // static find = (id) => this.all.find(job => job.id == id)
-
-  // Status.all.forEach(status => {
-  //   status.jobs.find(job => job.id == id) 
-  // })
 
   showDetails = () => {
     const {title, company, notes, appDate, link, statusName, id, statusId} = this
@@ -106,9 +86,7 @@ class Job {
        // console.log(updatedJob.statusId) 
         // Status.updateJobArray(updatedJob.id, updatedJob.statusId)
         // find id of updated job and replace job in original array with updated job
-    })
-   
-    
+    })   
   }
 
   renderEdit = (editBtn) => {
@@ -136,9 +114,6 @@ class Job {
   //   }
     
   editBtn.innerText = "Save"
- 
-
- //debugger
   }
   //selected="selected">  ${status.innerText}
 
