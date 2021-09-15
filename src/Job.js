@@ -1,7 +1,5 @@
 class Job {
 
-  
-
   constructor({id, title, company, notes, appDate, link, statusName, statusId, userId}) {
       this.userId = userId
       this.id = id;
@@ -12,7 +10,6 @@ class Job {
       this.link = link
       this.statusName = statusName
       this.statusId = statusId
-   
   }
 
   render = () => {
@@ -28,7 +25,6 @@ class Job {
       <p class="company">${company}</p>
       <p class="date">${appDate}</p>
       </div>`
-  
   }
 
   showDetails = () => {
@@ -60,41 +56,36 @@ class Job {
     else if (e.target.innerText == "Save") {
       console.log("save me!!")
      Status.saveUpdate(e.target)
-  }
+    }
     else if (e.target.id == "delete") {
         console.log("delete me!!")
         if (confirm("Are you sure you want to delete this job?")) {
-          this.deleteJob(e.target)
-        }
+          this.deleteJob(e.target) }
     }
 }
 
-
-
   renderEdit = (editBtn) => {
-  const div = editBtn.closest('Div')
-  const note = div.children.item(3)
-  const id = div.children.item(0).id
-  note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
-  const status = div.children.item(2)
-  const statusId = div.children.item(2).id
-
-  status.innerHTML = `Update your application status:<select required class= "edited-status"  name="status" id="status_id">
-  <option id="selected-status" selected value=${statusId}>${status.innerText}</option>
-  <option value=1>To Apply</option>
-  <option value=2>Applied</option>
-  <option value=3>Phone Inteview</option>
-  <option value=4>Next Round</option>
-  <option value=5>Offer</option>
-  </select>
-  <input type="hidden" id="job-id" value=${id}>`
+    const div = editBtn.closest('Div')
+    const note = div.children.item(3)
+    const id = div.children.item(0).id
+    note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
+    const status = div.children.item(2)
+    const statusId = div.children.item(2).id
+    status.innerHTML = `Update your application status:<select required class= "edited-status"  name="status" id="status_id">
+      <option id="selected-status" selected value=${statusId}>${status.innerText}</option>
+      <option value=1>To Apply</option>
+      <option value=2>Applied</option>
+      <option value=3>Phone Inteview</option>
+      <option value=4>Next Round</option>
+      <option value=5>Offer</option>
+      </select>
+      <input type="hidden" id="job-id" value=${id}>`
   // const statusSelect = document.getElementById("status_id")
- 
   // for (let i=0; i < statusSelect.length; i++) {
   //   if (statusSelect.options[i].value == statusId)
   //     statusSelect.remove(i)
   //   } 
-  editBtn.innerText = "Save"
+    editBtn.innerText = "Save"
   }
   //selected="selected">  ${status.innerText}
 
@@ -109,50 +100,50 @@ class Job {
    })
   }
 
- static handleJobForm = () => {
-  modal.open()
-  const form = document.getElementById("modal-text")
-  form.innerHTML = `
-    <h2> Add A New Job App</h2> <form id="create-form">
-    Title: <input type="text" name="title" >
-    Company: <input type="text" name="company">
-    Select your application status:<select name="status" id="status_id">
-    <option></option>
-    <option value=1>To Apply</option>
-    <option value=2>Applied</option>
-    <option value=3>Phone Inteview</option>
-    <option value=4>Next Round</option>
-    <option value=5>Offer</option>
-    </select>
-    Date:<input type="date" name="date"><br>
-    <br>
-    My notes about the job or application process:<br>
-    <textarea rows="15" cols ="50" name="notes"></textarea><br>
-    <br>
-    Link to App Posting:<input type="text" name="link" size="70"><br>
-    <br>
-    <input type="submit" value="Add My Job App">
-    </form>`
-  document.getElementById("close").addEventListener('click', e => {
-  modal.close() })
-  document.getElementById("create-form").addEventListener("submit", this.handleCreate)
+  static handleJobForm = () => {
+    modal.open()
+    const form = document.getElementById("modal-text")
+    form.innerHTML = `
+      <h2> Add A New Job App</h2> <form id="create-form">
+      Title: <input type="text" name="title" >
+      Company: <input type="text" name="company">
+      Select your application status:<select name="status" id="status_id">
+      <option></option>
+      <option value=1>To Apply</option>
+      <option value=2>Applied</option>
+      <option value=3>Phone Inteview</option>
+      <option value=4>Next Round</option>
+      <option value=5>Offer</option>
+      </select>
+      Date:<input type="date" name="date"><br>
+      <br>
+      My notes about the job or application process:<br>
+      <textarea rows="15" cols ="50" name="notes"></textarea><br>
+      <br>
+      Link to App Posting:<input type="text" name="link" size="70"><br>
+      <br>
+      <input type="submit" value="Add My Job App">
+      </form>`
+    document.getElementById("close").addEventListener('click', e => {
+    modal.close() })
+    document.getElementById("create-form").addEventListener("submit", this.handleCreate)
  }
 
- static handleCreate = (e) => {
-  e.preventDefault()
-  const newApp = {
+  static handleCreate = (e) => {
+    e.preventDefault()
+    const newApp = {
     title: e.target.title.value,
     company: e.target.company.value,
     status_id: e.target.status.value,
     date: e.target.date.value,
     notes: e.target.notes.value,
     link: e.target.link.value
- }
- api.createJobApp(newApp).then(job => {
+    }
+    api.createJobApp(newApp).then(job => {
     new Job(job).render()
- })
- e.target.reset()
- modal.close()
-}
+    })
+    e.target.reset()
+    modal.close()
+  }
 
 }

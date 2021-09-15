@@ -50,41 +50,41 @@
     }
 
     static findJob = (id) => {
-        // console.log(id)
+     // console.log(id)
         this.all.forEach(status => { 
-        const jobClicked = status.jobs.find(job => job.id == id)
+         const jobClicked = status.jobs.find(job => job.id == id)
         if (jobClicked) {
         jobClicked.showDetails()
         }
     })
 }
 
-static handleCardClick = (e) => {
+    static handleCardClick = (e) => {
     // console.log(Status.all)
-     if (e.target.classList.contains("title")) {
-       const id = e.target.closest(".job-card").dataset.jobId
-       this.findJob(id)
+        if (e.target.classList.contains("title")) {
+        const id = e.target.closest(".job-card").dataset.jobId
+        this.findJob(id)
        //console.log(job)
       // job.showDetails()
      }
    }
 
-   static saveUpdate = (saveBtn) => {
-    const div = saveBtn.closest('Div')
-    const noteEdit = div.querySelector(".edited-notes").value
-    const statusEdit = div.querySelector(".edited-status").value
-    const id = div.querySelector("#job-id").value
+    static saveUpdate = (saveBtn) => {
+        const div = saveBtn.closest('Div')
+        const noteEdit = div.querySelector(".edited-notes").value
+        const statusEdit = div.querySelector(".edited-status").value
+        const id = div.querySelector("#job-id").value
    // debugger
-    const updatedJob = {
-      id: id,
-      status_id: statusEdit,
-      notes: noteEdit 
-    }
-    api.updateJobApp(updatedJob).then(updatedJob => {
+        const updatedJob = {
+        id: id,
+        status_id: statusEdit,
+        notes: noteEdit 
+        }
+        api.updateJobApp(updatedJob).then(updatedJob => {
         new Job(updatedJob).showDetails()
         console.log(updatedJob.id)
         console.log(updatedJob.statusId) 
-    this.updateJobArray(updatedJob.id, updatedJob.statusId)
+        this.updateJobArray(updatedJob.id, updatedJob.statusId)
         // find id of updated job and replace job in original array with updated job
     })   
   }
@@ -94,8 +94,7 @@ static handleCardClick = (e) => {
         console.log(id)
         console.log(statusId)
         // const status = this.all.find(status => status.id == statusId)
-        // console.log(status)
-        
+        // console.log(status)   
     }
 
 }
