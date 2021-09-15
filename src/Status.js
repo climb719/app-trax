@@ -87,9 +87,9 @@ class Status {
         notes: e.target.notes.value,
         link: e.target.link.value
         }
-       
+        
         api.createJobApp(newApp).then(job => {
-        new Job(job).showDetails()
+        new Job(job).render()
         })
         
         e.target.reset()
@@ -150,9 +150,8 @@ class Status {
              console.log(job.statusId)
              console.log(job)
             } 
-         
-          })
-     
+        })
+     // by updating my job array -it's specific to a job with that id already existing. 
     //     status.map(x => {
     //     const obj = oldJob.find(({ id }) => id === x.id)
     //     return obj ? obj : x
