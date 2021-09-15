@@ -50,7 +50,7 @@
     }
 
     static findJob = (id) => {
-        console.log(id)
+        // console.log(id)
         this.all.forEach(status => { 
         const jobClicked = status.jobs.find(job => job.id == id)
         if (jobClicked) {
@@ -68,13 +68,35 @@ static handleCardClick = (e) => {
       // job.showDetails()
      }
    }
+
+   static saveUpdate = (saveBtn) => {
+    const div = saveBtn.closest('Div')
+    const noteEdit = div.querySelector(".edited-notes").value
+    const statusEdit = div.querySelector(".edited-status").value
+    const id = div.querySelector("#job-id").value
+   // debugger
+    const updatedJob = {
+      id: id,
+      status_id: statusEdit,
+      notes: noteEdit 
+    }
+    api.updateJobApp(updatedJob).then(updatedJob => {
+        new Job(updatedJob).showDetails()
+        console.log(updatedJob.id)
+        console.log(updatedJob.statusId) 
+    this.updateJobArray(updatedJob.id, updatedJob.statusId)
+        // find id of updated job and replace job in original array with updated job
+    })   
+  }
       
 
-    // static updateJobArray(id, statusId) {
-    //     const status = this.all.find(statusId)
-    //     console.log(status)
+    static updateJobArray(id, statusId) {
+        console.log(id)
+        console.log(statusId)
+        // const status = this.all.find(status => status.id == statusId)
+        // console.log(status)
         
-    // }
+    }
 
 }
 

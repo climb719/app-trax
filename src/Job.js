@@ -59,7 +59,7 @@ class Job {
     }
     else if (e.target.innerText == "Save") {
       console.log("save me!!")
-     Job.saveUpdate(e.target)
+     Status.saveUpdate(e.target)
   }
     else if (e.target.id == "delete") {
         console.log("delete me!!")
@@ -69,25 +69,7 @@ class Job {
     }
 }
 
- static saveUpdate = (saveBtn) => {
-    const div = saveBtn.closest('Div')
-    const noteEdit = div.querySelector(".edited-notes").value
-    const statusEdit = div.querySelector(".edited-status").value
-    const id = div.querySelector("#job-id").value
-   // debugger
-    const updatedJob = {
-      id: id,
-      status_id: statusEdit,
-      notes: noteEdit 
-    }
-    api.updateJobApp(updatedJob).then(updatedJob => {
-        new Job(updatedJob).showDetails()
-        console.log(updatedJob.id)
-       // console.log(updatedJob.statusId) 
-        // Status.updateJobArray(updatedJob.id, updatedJob.statusId)
-        // find id of updated job and replace job in original array with updated job
-    })   
-  }
+
 
   renderEdit = (editBtn) => {
   const div = editBtn.closest('Div')
@@ -111,8 +93,7 @@ class Job {
   // for (let i=0; i < statusSelect.length; i++) {
   //   if (statusSelect.options[i].value == statusId)
   //     statusSelect.remove(i)
-  //   }
-    
+  //   } 
   editBtn.innerText = "Save"
   }
   //selected="selected">  ${status.innerText}
