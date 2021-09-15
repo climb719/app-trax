@@ -58,7 +58,7 @@ class Job {
 
   handleShowClick = (e) => {
     if (e.target.id == "back") {
-      Status.checkJobArray()
+      Status.renderMain()
     }  
     else if (e.target.innerText == "Edit") {
      // console.log("edit me!!")
@@ -106,7 +106,7 @@ class Job {
     api.deleteJob(id).then(() => {
     const main = document.getElementById("main")
     main.innerHTML = ''
-    Status.renderDivs() 
+    Status.renderMain() 
     document.getElementById(`card-${id}`).remove()
    })
   }

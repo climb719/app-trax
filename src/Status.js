@@ -28,7 +28,7 @@ class Status {
         jobContainer.id = "job-container"
         addJob.innerText = "Add a New Job"
         main.append(jobContainer, addJob)
-        addJob.addEventListener('click', Job.handleJobForm)
+        addJob.addEventListener('click', this.handleJobForm)
         jobContainer.addEventListener("click", Job.handleCardClick)
         const statusDiv = document.createElement('div')
         jobContainer.appendChild(statusDiv)
@@ -89,6 +89,7 @@ class Status {
         }
         api.createJobApp(newApp).then(job => {
         new Job(job).render()
+        //this.checkJobArray(newApp)
         })
         e.target.reset()
         modal.close()
@@ -139,25 +140,56 @@ class Status {
 }
       
 
-    static checkJobArray(id, updatedJob) {
+    static checkJobArray(id, newJobInfo) {
         // console.log(id)
-       // console.log(updatedJob)
+        // console.log(newJobInfo)
         this.all.forEach(status => {
-            status.jobs.map(job => {
-               if (job.userId == user.id) {
-                //  console.log(job)
-                //  console.log(updatedJob)
-                 jobIndex = status.jobs.findIndex((job => job.id == id));
-
-                 //Log object to Console.
-                 console.log("Before update: ", status.jobs[jobIndex])
-               }
-            })  
+        status.jobs.map(job => {
+           if (job.id == newJobInfo.id && job.userId == user.id) {
+             console.log(job.statusId)
+             job.statusId = newJobInfo.statusId
+             job.notes = newJobInfo.notes
+             job.statusName = newJobInfo.statusName
+             console.log(job.statusId)
+             console.log(job)
+            } 
+         
+          })
+     
+    //     status.map(x => {
+    //     const obj = oldJob.find(({ id }) => id === x.id)
+    //     return obj ? obj : x
+    //   })
+    //   console.log(result)
         })
-       //console.log(user.jobs)
+        // console.log(user.jobs)
     }
-       // this.renderMain()  
-}
+
+
+//     static checkJobArray(id, updatedJob) {
+//         // console.log(id)
+//        // console.log(updatedJob)
+//         this.all.forEach(status => {
+//             status.jobs.map(job => {
+//                if (job.userId == user.id) {
+//                console.log(job)
+//                 //  console.log(updatedJob)
+//                  const jobIndex = status.jobs.findIndex((job => job.id == id))
+         
+//                  console.log("Before update: ", status.jobs[jobIndex])
+//                 // debugger
+//                 console.log(updatedJob.statusId)
+                
+//                  status.jobs[jobIndex].statusId = updatedJob.statusId
+//                  status.jobs[jobIndex].notes = updatedJob.notes
+//                  console.log("After update: ", status.jobs[jobIndex])
+//                }
+//             })  
+//         })
+//        //console.log(user.jobs)
+//     }
+//        // this.renderMain()  
+ }
 
 // if (job.id == updatedJob.id && job.userId == user.id) {
 //     console.log(job)
