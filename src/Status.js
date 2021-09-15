@@ -87,17 +87,15 @@ class Status {
         notes: e.target.notes.value,
         link: e.target.link.value
         }
+       
         api.createJobApp(newApp).then(job => {
-        new Job(job).render()
-        //this.checkJobArray(newApp)
+        new Job(job).showDetails()
         })
+        
         e.target.reset()
         modal.close()
       }
     
-
-    
-
 //     static handleCardClick = (e) => {
 //     // console.log(Status.all)
 //         if (e.target.classList.contains("title")) {
@@ -145,8 +143,7 @@ class Status {
         // console.log(newJobInfo)
         this.all.forEach(status => {
         status.jobs.map(job => {
-           if (job.id == newJobInfo.id && job.userId == user.id) {
-             console.log(job.statusId)
+           if (job.id == newJobInfo.id && job.userId == user.id) { 
              job.statusId = newJobInfo.statusId
              job.notes = newJobInfo.notes
              job.statusName = newJobInfo.statusName

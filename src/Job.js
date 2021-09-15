@@ -101,13 +101,15 @@ class Job {
   //selected="selected">  ${status.innerText}
 
   deleteJob = (deleteBtn) => {
+  
+    
     const div = deleteBtn.closest('Div')
     const id =  div.children.item(0).id
-    api.deleteJob(id).then(() => {
-    const main = document.getElementById("main")
     main.innerHTML = ''
     Status.renderMain() 
     document.getElementById(`card-${id}`).remove()
+    api.deleteJob(id).then(() => {
+    console.log("deleted!")
    })
   }
 
