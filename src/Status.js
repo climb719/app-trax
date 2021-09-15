@@ -30,7 +30,7 @@
         addJob.innerText = "Add a New Job"
         main.append(jobContainer, addJob)
         addJob.addEventListener('click', Job.handleJobForm)
-        jobContainer.addEventListener("click", Job.handleCardClick)
+        jobContainer.addEventListener("click", this.handleCardClick)
         const statusDiv = document.createElement('div')
         jobContainer.appendChild(statusDiv)
         this.all.forEach(status => { 
@@ -58,6 +58,16 @@
         }
     })
 }
+
+static handleCardClick = (e) => {
+    // console.log(Status.all)
+     if (e.target.classList.contains("title")) {
+       const id = e.target.closest(".job-card").dataset.jobId
+       this.findJob(id)
+       //console.log(job)
+      // job.showDetails()
+     }
+   }
       
 
     // static updateJobArray(id, statusId) {

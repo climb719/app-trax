@@ -1,6 +1,6 @@
 class Job {
 
-  static all = []
+  
 
   constructor({id, title, company, notes, appDate, link, statusName, statusId, userId}) {
       this.userId = userId
@@ -12,7 +12,7 @@ class Job {
       this.link = link
       this.statusName = statusName
       this.statusId = statusId
-      this.constructor.all.push(this)
+   
   }
 
 
@@ -43,15 +43,7 @@ class Job {
   
   }
 
-  static handleCardClick = (e) => {
-   // console.log(Status.all)
-    if (e.target.classList.contains("title")) {
-      const id = e.target.closest(".job-card").dataset.jobId
-      Status.findJob(id)
-      //console.log(job)
-     // job.showDetails()
-    }
-  }
+
 
   // static find = (id) => this.all.find(job => job.id == id)
 
