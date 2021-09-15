@@ -7,7 +7,7 @@
         this.name = name 
         this.jobs = jobs.map(job => new Job(job))
         this.constructor.all.push(this)
-       // debugger
+      
     }
 
     static getStatuses() {
@@ -42,13 +42,29 @@
        this.all.forEach(status => {
            status.jobs.forEach(job => {
              if (job.userId == user.id) {
-                 console.log(job)
+                // console.log(job)
                 job.render()
             } 
             })
         })
-
     }
+
+    static findJob = (id) => {
+        console.log(id)
+        this.all.forEach(status => { 
+        const jobClicked = status.jobs.find(job => job.id == id)
+        if (jobClicked) {
+        jobClicked.showDetails()
+        }
+    })
+}
+      
+
+    // static updateJobArray(id, statusId) {
+    //     const status = this.all.find(statusId)
+    //     console.log(status)
+        
+    // }
 
 }
 

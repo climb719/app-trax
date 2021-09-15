@@ -15,11 +15,23 @@ class Job {
       this.constructor.all.push(this)
   }
 
+
+  //  static renderCards = () => {
+  //    console.log(this.all)
+  //     this.all.forEach(job => {
+  //       job => new Job(job)
+  //       if (job.userId == user.id) {
+  //               // console.log(job)
+  //         job.render()
+  //       } 
+  //     })
+  //   }
+
   render = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
      // console.log(this)
       let n = this.statusId
-      console.log(n)
+     // console.log(n)
      const statusCard = document.getElementById(n)
    // console.log(statusId)
      statusCard.innerHTML += `
@@ -32,13 +44,20 @@ class Job {
   }
 
   static handleCardClick = (e) => {
+   // console.log(Status.all)
     if (e.target.classList.contains("title")) {
       const id = e.target.closest(".job-card").dataset.jobId
-      this.find(id).showDetails()
+      Status.findJob(id)
+      //console.log(job)
+     // job.showDetails()
     }
   }
 
-  static find = (id) => this.all.find(job => job.id == id)
+  // static find = (id) => this.all.find(job => job.id == id)
+
+  // Status.all.forEach(status => {
+  //   status.jobs.find(job => job.id == id) 
+  // })
 
   showDetails = () => {
     const {title, company, notes, appDate, link, statusName, id, statusId} = this
@@ -91,9 +110,12 @@ class Job {
     }
     api.updateJobApp(updatedJob).then(updatedJob => {
         new Job(updatedJob).showDetails()
-        console.log(updatedJob)
-        // find id of updated job and replace job in orriginal array with updated job
+        console.log(updatedJob.id)
+       // console.log(updatedJob.statusId) 
+        // Status.updateJobArray(updatedJob.id, updatedJob.statusId)
+        // find id of updated job and replace job in original array with updated job
     })
+   
     
   }
 
