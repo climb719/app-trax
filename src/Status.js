@@ -113,16 +113,17 @@ class Status {
         const statusEdit = div.querySelector(".edited-status").value
         const id = div.querySelector("#job-id").value
    // debugger
-        const oldJob = {
+        const updatedJob = {
         id: id,
         status_id: statusEdit,
         notes: noteEdit 
         }
-        api.updateJobApp(oldJob).then(oldJob => {
-        new Job(oldJob).showDetails()
+        api.updateJobApp(updatedJob).then(updatedJob=> {
+        new Job(updatedJob).showDetails()
         // console.log(oldJob.id)
         // console.log(oldJob.statusId) 
-        this.checkJobArray(oldJob.id, oldJob.statusId)
+       // console.log(updatedJob)
+        this.checkJobArray(updatedJob.id, updatedJob)
         // find id of updated job and replace job in original array with updated job
     })   
   }
@@ -138,35 +139,29 @@ class Status {
 }
       
 
-    static checkJobArray(id, statusId) {
+    static checkJobArray(id, updatedJob) {
         // console.log(id)
-        // console.log(statusId)
-        // const jobStatus = this.all.find(status => status.id == statusId)
-        // console.log (jobStatus)
-        const result =  this.all.forEach(status => {
-            status.jobs.forEach(job => {
-              if (job.userId == user.id) {
-            const oldJob = status.jobs.find(job => job.id == id) 
-            console.log(oldJob) }
-            //console.log(status)
-              })
-        //     status.map(x => {
-        //     const obj = oldJob.find(({ id }) => id === x.id)
-        //     return obj ? obj : x
-        //   })
-        //   console.log(result)
+       // console.log(updatedJob)
+        this.all.forEach(status => {
+            status.jobs.map(job => {
+               if (job.userId == user.id) {
+                //  console.log(job)
+                //  console.log(updatedJob)
+                 jobIndex = status.jobs.findIndex((job => job.id == id));
+
+                 //Log object to Console.
+                 console.log("Before update: ", status.jobs[jobIndex])
+               }
+            })  
         })
+       //console.log(user.jobs)
     }
-
-        // const jobFound = jobStatus.jobs.find(job => job.id == id)
-        // console.log(jobFound)
-
-        // const status = this.all.find(status => status.id == statusId)
-        // console.log(status) 
        // this.renderMain()  
 }
 
-
+// if (job.id == updatedJob.id && job.userId == user.id) {
+//     console.log(job)
+//     console.log(updatedJob)
 
 
 
