@@ -54,6 +54,7 @@ class Status {
         const form = document.getElementById("modal-text")
         form.innerHTML = `
           <h2> Add A New Job App</h2> <form id="create-form">
+        
           Title: <input type="text" name="title" >
           Company: <input type="text" name="company">
           Select your application status:<select name="status" id="status_id">
@@ -80,7 +81,10 @@ class Status {
     
     static handleCreate = (e) => {
         e.preventDefault()
+        console.log(e.target)
+        
         const newApp = {
+        
         title: e.target.title.value,
         company: e.target.company.value,
         status_id: e.target.status.value,
@@ -88,11 +92,18 @@ class Status {
         notes: e.target.notes.value,
         link: e.target.link.value
         }
+        console.log(newApp)
+      
         
-        api.createJobApp(newApp).then(job => {
-        new Job(job).render()
+        api.createJobApp(newApp).then(data => {
+            console.log(data.id)
+            console.log(data.statusId)
+            const newJob = new Job(data)
+        //this.jobs.push(newJob)
+       // const newId = document.getElementById()
+        //newJob.render()
         })
-        
+       // const jobStatus = this.all.find(status => status.id == status_id)
         e.target.reset()
         modal.close()
       }
@@ -129,9 +140,10 @@ class Status {
   }
 
   static findJob = (id) => {
-    // console.log(id)
+   console.log(id)
        this.all.forEach(status => { 
         const jobClicked = status.jobs.find(job => job.id == id)
+        console.log(jobClicked)
        if (jobClicked) {
        jobClicked.showDetails()
        }

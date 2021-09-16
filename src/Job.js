@@ -33,6 +33,7 @@ class Job {
     console.log(e.target)
       if (e.target.classList.contains("title")) {
       const id = e.target.closest(".job-card").dataset.id
+      console.log(id)
       Status.findJob(id)
        //console.log(job)
       // job.showDetails()
@@ -107,8 +108,6 @@ class Job {
     const id =  div.children.item(0).id
     main.innerHTML = ''
     Status.renderMain() 
-   
-    //console.log(document.querySelectorAll(`[data-id=${id}]`))
     document.getElementById(`card-${id}`).remove()
     api.deleteJob(id).then(() => {
     console.log("deleted!")
