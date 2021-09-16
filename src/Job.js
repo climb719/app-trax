@@ -81,7 +81,7 @@ class Job {
     const div = editBtn.closest('Div')
     const note = div.children.item(3)
     const id = div.children.item(0).id
-    note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes">${note.innerText}</textarea><br>`
+    note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes" required>${note.innerText}</textarea><br>`
     const status = div.children.item(2)
     const statusId = div.children.item(2).id
     status.innerHTML = `Update your application status:<select required class= "edited-status"  name="status" id="status_id">
