@@ -39,11 +39,15 @@ class ApiService {
     //   });
 
    deleteJob = (id) => {
-      //debugger
+    
         return fetch(`${this.api}/jobs/${id}`, {
           method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+        }
       })
       .then(response => response.json())
+      
     }
 
     FindOrCreateUser = (email) => {

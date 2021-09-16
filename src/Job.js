@@ -14,8 +14,6 @@ class Job {
 
   render = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
-      console.log(document.getElementById("job-container"))
-
       let n = this.statusId
      // console.log(n)
      const statusCard = document.getElementById(n)
@@ -30,7 +28,7 @@ class Job {
   
   
   static handleCardClick = (e) => {
-    console.log(e.target)
+   // console.log(e.target)
       if (e.target.classList.contains("title")) {
       const id = e.target.closest(".job-card").dataset.id
       console.log(id)
@@ -73,7 +71,7 @@ class Job {
     else if (e.target.id == "delete") {
        // console.log("delete me!!")
         if (confirm("Are you sure you want to delete this job?")) {
-          this.deleteJob(e.target) }
+          Status.deleteJob(e.target) }
     }
 }
 
@@ -102,17 +100,21 @@ class Job {
   }
   //selected="selected">  ${status.innerText}
 
-  deleteJob = (deleteBtn) => {
-
-    const div = deleteBtn.closest('Div')
-    const id =  div.children.item(0).id
-    main.innerHTML = ''
-    Status.renderMain() 
-    document.getElementById(`card-${id}`).remove()
-    api.deleteJob(id).then(() => {
-    console.log("deleted!")
-   })
-  }
+  // deleteJob = (deleteBtn) => {
+  //   const div = deleteBtn.closest('Div')
+  //   const id =  div.children.item(0).id
+  //   const status = div.children.item(2).id
+  //   main.innerHTML = ''
+  //   Status.renderMain() 
+  //   document.getElementById(`card-${id}`).remove()
+  //   console.log(status)
+  //   debugger
+  //   // const jobInArray = status.all.find(job => job.id == id)
+  //   // console.log(jobInArray)
+  //   api.deleteJob(id).then(() => {
+   
+  //  })
+  // }
 
  
 }

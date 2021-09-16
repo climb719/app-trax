@@ -87,11 +87,11 @@ class Status {
         notes: e.target.notes.value,
         link: e.target.link.value
         }
-        console.log(newApp)
-          const jobStatus = this.all.find(status => status.id == newApp.status_id)
+       // console.log(newApp)
+        const jobStatus = this.all.find(status => status.id == newApp.status_id)
         api.createJobApp(newApp).then(data => {
-            console.log(data.id)
-            console.log(data.statusId)
+            // console.log(data.id)
+            // console.log(data.statusId)
             const newJob = new Job(data)
             jobStatus.jobs.push(newJob)
             newJob.render()
@@ -132,10 +132,9 @@ class Status {
   }
 
   static findJob = (id) => {
-   console.log(id)
+  // console.log(id)
        this.all.forEach(status => { 
         const jobClicked = status.jobs.find(job => job.id == id)
-        console.log(jobClicked)
        if (jobClicked) {
        jobClicked.showDetails()
        }
@@ -151,21 +150,30 @@ class Status {
            if (job.id == newJobInfo.id && job.userId == user.id) { 
              job.statusId = newJobInfo.statusId
              job.notes = newJobInfo.notes
-             job.statusName = newJobInfo.statusName
-            //  console.log(job.statusId)
-            //  console.log(job)
-            } 
-        })
-     // by updating my job array -it's specific to a job with that id already existing. 
-    //     status.map(x => {
-    //     const obj = oldJob.find(({ id }) => id === x.id)
-    //     return obj ? obj : x
-    //   })
-    //   console.log(result)
-        })
-        // console.log(user.jobs)
+             job.statusName = newJobInfo.statusName } 
+            })
+        })  
     }
 
+    static deleteJob = (deleteBtn) => {
+        const div = deleteBtn.closest('Div')
+        const id =  div.children.item(0).id
+        const statId = div.children.item(2).id
+        document.getElementById(`card-${id}`).remove()
+        const jobStat = this.all.find(status => status.id == statId)
+        const i = jobStat.jobs.findIndex(job => job.id == id)
+        jobStat.jobs.splice(i, 1)
+        console.log(jobStat)
+       //debugger
+        // const jobInArray = status.all.find(job => job.id == id)
+        // console.log(jobInArray)
+        api.deleteJob(id).then(() => {
+            main.innerHTML = ''
+            Status.renderMain() 
+       })
+      }
+    
+  
 
 //     static checkJobArray(id, updatedJob) {
 //         // console.log(id)
