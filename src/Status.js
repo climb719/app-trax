@@ -81,10 +81,7 @@ class Status {
     
     static handleCreate = (e) => {
         e.preventDefault()
-        console.log(e.target)
-        
         const newApp = {
-        
         title: e.target.title.value,
         company: e.target.company.value,
         status_id: e.target.status.value,
@@ -93,17 +90,14 @@ class Status {
         link: e.target.link.value
         }
         console.log(newApp)
-      
-        
+          const jobStatus = this.all.find(status => status.id == newApp.status_id)
         api.createJobApp(newApp).then(data => {
             console.log(data.id)
             console.log(data.statusId)
             const newJob = new Job(data)
-        //this.jobs.push(newJob)
-       // const newId = document.getElementById()
-        //newJob.render()
+            jobStatus.jobs.push(newJob)
+            newJob.render()
         })
-       // const jobStatus = this.all.find(status => status.id == status_id)
         e.target.reset()
         modal.close()
       }
