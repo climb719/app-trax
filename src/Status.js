@@ -42,8 +42,7 @@ class Status {
            status.jobs.forEach(job => {
              if (job.userId == user.id) {
                 // console.log(job)
-                job.render()
-            } 
+                job.render() } 
             })
         })
     }
@@ -54,10 +53,9 @@ class Status {
         const form = document.getElementById("modal-text")
         form.innerHTML = `
           <h2> Add A New Job App</h2> <form id="create-form">
-        
-          Title: <input type="text" name="title" >
-          Company: <input type="text" name="company">
-          Select your application status:<select name="status" id="status_id">
+          Title: <input type="text" name="title" required>
+          Company: <input type="text" name="company" required>
+          Select your application status:<select required name="status" id="status_id" >
           <option></option>
           <option value=1>To Apply</option>
           <option value=2>Applied</option>
@@ -65,12 +63,12 @@ class Status {
           <option value=4>Next Round</option>
           <option value=5>Offer</option>
           </select>
-          Date:<input type="date" name="date"><br>
+          Date:<input type="date" name="date" required><br>
           <br>
           My notes about the job or application process:<br>
-          <textarea rows="15" cols ="50" name="notes"></textarea><br>
+          <textarea rows="15" cols ="50" name="notes" required></textarea><br>
           <br>
-          Link to App Posting:<input type="text" name="link" size="70"><br>
+          Link to App Posting:<input type="text" name="link" size="70" required><br>
           <br>
           <input type="submit" value="Add My Job App">
           </form>`
