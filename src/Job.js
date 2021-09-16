@@ -14,13 +14,14 @@ class Job {
 
   render = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
-     // console.log(this)
+      console.log(document.getElementById("job-container"))
+
       let n = this.statusId
      // console.log(n)
      const statusCard = document.getElementById(n)
    // console.log(statusId)
      statusCard.innerHTML += `
-      <div class="job-card" data-job-id=${id} id=card-${id}>
+      <div class="job-card" data-id=${id} id=card-${id}>
       <p class="title">${title}</p>
       <p class="company">${company}</p>
       <p class="date">${appDate}</p>
@@ -29,9 +30,9 @@ class Job {
   
   
   static handleCardClick = (e) => {
-    //console.log(Status.all)
+    console.log(e.target)
       if (e.target.classList.contains("title")) {
-      const id = e.target.closest(".job-card").dataset.jobId
+      const id = e.target.closest(".job-card").dataset.id
       Status.findJob(id)
        //console.log(job)
       // job.showDetails()
@@ -101,12 +102,13 @@ class Job {
   //selected="selected">  ${status.innerText}
 
   deleteJob = (deleteBtn) => {
-  
-    
+
     const div = deleteBtn.closest('Div')
     const id =  div.children.item(0).id
     main.innerHTML = ''
     Status.renderMain() 
+   
+    //console.log(document.querySelectorAll(`[data-id=${id}]`))
     document.getElementById(`card-${id}`).remove()
     api.deleteJob(id).then(() => {
     console.log("deleted!")

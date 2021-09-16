@@ -38,7 +38,7 @@ class Status {
              <div class= "status-card" id=${status.id}> 
              <p class= "name"> ${status.name}</p>
              </div>` })
-       this.all.forEach(status => {
+        this.all.forEach(status => {
            status.jobs.forEach(job => {
              if (job.userId == user.id) {
                 // console.log(job)
@@ -47,6 +47,7 @@ class Status {
             })
         })
     }
+
 
     static handleJobForm = () => {
         modal.open()
@@ -147,8 +148,8 @@ class Status {
              job.statusId = newJobInfo.statusId
              job.notes = newJobInfo.notes
              job.statusName = newJobInfo.statusName
-             console.log(job.statusId)
-             console.log(job)
+            //  console.log(job.statusId)
+            //  console.log(job)
             } 
         })
      // by updating my job array -it's specific to a job with that id already existing. 
