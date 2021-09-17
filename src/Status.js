@@ -100,15 +100,6 @@ class Status {
         modal.close()
       }
     
-//     static handleCardClick = (e) => {
-//     // console.log(Status.all)
-//         if (e.target.classList.contains("title")) {
-//         const id = e.target.closest(".job-card").dataset.jobId
-//         this.findJob(id)
-//        //console.log(job)
-//       // job.showDetails()
-//      }
-//    }
 
     static saveUpdate = (saveBtn) => {
         const div = saveBtn.closest('Div')
@@ -150,9 +141,19 @@ class Status {
            if (job.id == newJobInfo.id && job.userId == user.id) { 
              job.statusId = newJobInfo.statusId
              job.notes = newJobInfo.notes
-             job.statusName = newJobInfo.statusName } 
-            })
-        })  
+             job.statusName = newJobInfo.statusName
+            //  console.log(job.statusId)
+            //  console.log(job)
+            } 
+        })
+     // by updating my job array -it's specific to a job with that id already existing. 
+    //     status.map(x => {
+    //     const obj = oldJob.find(({ id }) => id === x.id)
+    //     return obj ? obj : x
+    //   })
+    //   console.log(result)
+        })
+       
     }
 
     static deleteJob = (deleteBtn) => {
@@ -173,36 +174,7 @@ class Status {
        })
       }
     
-  
-
-//     static checkJobArray(id, updatedJob) {
-//         // console.log(id)
-//        // console.log(updatedJob)
-//         this.all.forEach(status => {
-//             status.jobs.map(job => {
-//                if (job.userId == user.id) {
-//                console.log(job)
-//                 //  console.log(updatedJob)
-//                  const jobIndex = status.jobs.findIndex((job => job.id == id))
-         
-//                  console.log("Before update: ", status.jobs[jobIndex])
-//                 // debugger
-//                 console.log(updatedJob.statusId)
-                
-//                  status.jobs[jobIndex].statusId = updatedJob.statusId
-//                  status.jobs[jobIndex].notes = updatedJob.notes
-//                  console.log("After update: ", status.jobs[jobIndex])
-//                }
-//             })  
-//         })
-//        //console.log(user.jobs)
-//     }
-//        // this.renderMain()  
- }
-
-// if (job.id == updatedJob.id && job.userId == user.id) {
-//     console.log(job)
-//     console.log(updatedJob)
+    }
 
 
 

@@ -95,26 +95,9 @@ class Job {
   // for (let i=0; i < statusSelect.length; i++) {
   //   if (statusSelect.options[i].value == statusId)
   //     statusSelect.remove(i)
+  //    break
   //   } 
     editBtn.innerText = "Save"
   }
-  //selected="selected">  ${status.innerText}
-
-  // deleteJob = (deleteBtn) => {
-  //   const div = deleteBtn.closest('Div')
-  //   const id =  div.children.item(0).id
-  //   const status = div.children.item(2).id
-  //   main.innerHTML = ''
-  //   Status.renderMain() 
-  //   document.getElementById(`card-${id}`).remove()
-  //   console.log(status)
-  //   debugger
-  //   // const jobInArray = status.all.find(job => job.id == id)
-  //   // console.log(jobInArray)
-  //   api.deleteJob(id).then(() => {
-   
-  //  })
-  // }
-
  
 }
