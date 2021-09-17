@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap');
 
 body {
     background-color: lightblue;
     text-align: center;
     font-family: Kaisei Tokumin;
+}
+
+.app-title {
+  font-family: Jacques Francois Shadow;
+  font-size: 3em;
 }
 
 
