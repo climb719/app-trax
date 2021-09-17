@@ -19,19 +19,18 @@ class Status {
      })
     } 
 
-
     static renderMain = () => {
         const main = document.getElementById('main')
         main.innerHTML = ""
         const addJob = document.createElement("button")
-        const jobContainer = document.createElement('div')
-        jobContainer.id = "job-container"
+        const appContainer = document.createElement('div')
+        appContainer.id = "app-container"
         addJob.innerText = "Add a New Job"
-        main.append(jobContainer, addJob)
-        addJob.addEventListener('click', this.handleJobForm)
-        jobContainer.addEventListener("click", Job.handleCardClick)
+        main.append(appContainer, addJob)
+        addJob.addEventListener('click', this.handleForm)
+        appContainer.addEventListener("click", Job.handleCardClick)
         const statusDiv = document.createElement('div')
-        jobContainer.appendChild(statusDiv)
+        appContainer.appendChild(statusDiv)
         this.all.forEach(status => { 
             //debugger
             statusDiv.innerHTML += `
@@ -39,16 +38,15 @@ class Status {
              <p class= "name"> ${status.name}</p>
              </div>` })
         this.all.forEach(status => {
-           status.jobs.forEach(job => {
-             if (job.userId == user.id) {
-                // console.log(job)
-                job.render() } 
-            })
-        })
-    }
-
-
-    static handleJobForm = () => {
+            status.jobs.forEach(job => {
+              if (job.userId == user.id) {
+                 // console.log(job)
+                 job.render() } 
+             })
+         })
+     }
+ 
+    static handleForm = () => {
         modal.open()
         const form = document.getElementById("modal-text")
         form.innerHTML = `
@@ -87,11 +85,8 @@ class Status {
         notes: e.target.notes.value,
         link: e.target.link.value
         }
-       // console.log(newApp)
         const jobStatus = this.all.find(status => status.id == newApp.status_id)
         api.createJobApp(newApp).then(data => {
-            // console.log(data.id)
-            // console.log(data.statusId)
             const newJob = new Job(data)
             jobStatus.jobs.push(newJob)
             newJob.render()
@@ -106,7 +101,6 @@ class Status {
         const noteEdit = div.querySelector(".edited-notes").value
         const statusEdit = div.querySelector(".edited-status").value
         const id = div.querySelector("#job-id").value
-   // debugger
         const updatedJob = {
         id: id,
         status_id: statusEdit,
@@ -114,67 +108,42 @@ class Status {
         }
         api.updateJobApp(updatedJob).then(updatedJob=> {
         new Job(updatedJob).showDetails()
-        // console.log(oldJob.id)
-        // console.log(oldJob.statusId) 
-       // console.log(updatedJob)
         this.checkJobArray(updatedJob.id, updatedJob)
-        // find id of updated job and replace job in original array with updated job
-    })   
-  }
+        })   
+    }
 
-  static findJob = (id) => {
-  // console.log(id)
+    static find = (id) => {
        this.all.forEach(status => { 
         const jobClicked = status.jobs.find(job => job.id == id)
-       if (jobClicked) {
-       jobClicked.showDetails()
-       }
-   })
-}
-      
+        if (jobClicked) {
+        jobClicked.showDetails()}
+        })
+    }
 
     static checkJobArray(id, newJobInfo) {
-        // console.log(id)
-        // console.log(newJobInfo)
         this.all.forEach(status => {
         status.jobs.map(job => {
            if (job.id == newJobInfo.id && job.userId == user.id) { 
              job.statusId = newJobInfo.statusId
              job.notes = newJobInfo.notes
-             job.statusName = newJobInfo.statusName
-            //  console.log(job.statusId)
-            //  console.log(job)
-            } 
-        })
-     // by updating my job array -it's specific to a job with that id already existing. 
-    //     status.map(x => {
-    //     const obj = oldJob.find(({ id }) => id === x.id)
-    //     return obj ? obj : x
-    //   })
-    //   console.log(result)
-        })
-       
+             job.statusName = newJobInfo.statusName} 
+            })
+        })   
     }
-
+     
     static deleteJob = (deleteBtn) => {
         const div = deleteBtn.closest('Div')
         const id =  div.children.item(0).id
         const statId = div.children.item(2).id
-        document.getElementById(`card-${id}`).remove()
         const jobStat = this.all.find(status => status.id == statId)
         const i = jobStat.jobs.findIndex(job => job.id == id)
         jobStat.jobs.splice(i, 1)
-        console.log(jobStat)
-       //debugger
-        // const jobInArray = status.all.find(job => job.id == id)
-        // console.log(jobInArray)
+        Status.renderMain() 
         api.deleteJob(id).then(() => {
-            main.innerHTML = ''
-            Status.renderMain() 
+        console.log("deleted!")
        })
-      }
-    
     }
-
+    
+}
 
 

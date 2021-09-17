@@ -32,28 +32,28 @@ class Job {
       if (e.target.classList.contains("title")) {
       const id = e.target.closest(".job-card").dataset.id
       console.log(id)
-      Status.findJob(id)
+      Status.find(id)
        //console.log(job)
       // job.showDetails()
      }
    }
 
   showDetails = () => {
-    const {title, company, notes, appDate, link, statusName, id, statusId} = this
+      const {title, company, notes, appDate, link, statusName, id, statusId} = this
  // console.log(this)
-    document.getElementById("main").innerHTML = `
-    <div id ="details-container">
-    <h1 id=${id}>${title}</h1>
-    <h2>Company: ${company}</h2>
-    <h3 id=${statusId}>${statusName}</h3>
-    <p class="notes">${notes}</p>
-    <p class="date">${appDate}</p>
-    <a href="${link}" target="_blank"> More application details</a>
-    <p><button id="edit">Edit</button></p>
-    <p><button id="back">Back</button></p>
-    <p><button id="delete">Delete</button></p>
-    </div>`
-    document.getElementById("details-container").addEventListener('click', this.handleShowClick)
+      document.getElementById("main").innerHTML = `
+        <div id ="details-container">
+        <h1 id=${id}>${title}</h1>
+        <h2>Company: ${company}</h2>
+        <h3 id=${statusId}>${statusName}</h3>
+        <p class="notes">${notes}</p>
+        <p class="date">${appDate}</p>
+        <a href="${link}" target="_blank"> More application details</a>
+        <p><button id="edit">Edit</button></p>
+        <p><button id="back">Back</button></p>
+        <p><button id="delete">Delete</button></p>
+        </div>`
+      document.getElementById("details-container").addEventListener('click', this.handleShowClick)
   }
 
   handleShowClick = (e) => {
@@ -95,7 +95,6 @@ class Job {
   // for (let i=0; i < statusSelect.length; i++) {
   //   if (statusSelect.options[i].value == statusId)
   //     statusSelect.remove(i)
-  //    break
   //   } 
     editBtn.innerText = "Save"
   }
