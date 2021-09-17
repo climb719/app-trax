@@ -15,9 +15,7 @@ class Job {
   render = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
       let n = this.statusId
-     // console.log(n)
      const statusCard = document.getElementById(n)
-   // console.log(statusId)
      statusCard.innerHTML += `
       <div class="job-card" data-id=${id} id=card-${id}>
       <p class="title">${title}</p>
@@ -28,19 +26,16 @@ class Job {
   
   
   static handleCardClick = (e) => {
-   // console.log(e.target)
+
       if (e.target.classList.contains("title")) {
       const id = e.target.closest(".job-card").dataset.id
       console.log(id)
       Status.find(id)
-       //console.log(job)
-      // job.showDetails()
      }
    }
 
   showDetails = () => {
       const {title, company, notes, appDate, link, statusName, id, statusId} = this
- // console.log(this)
       document.getElementById("main").innerHTML = `
         <div id ="details-container">
         <h1 id=${id}>${title}</h1>
@@ -61,15 +56,12 @@ class Job {
       Status.renderMain()
     }  
     else if (e.target.innerText == "Edit") {
-     // console.log("edit me!!")
         this.renderEdit(e.target)
     }
     else if (e.target.innerText == "Save") {
-     // console.log("save me!!")
      Status.saveUpdate(e.target)
     }
     else if (e.target.id == "delete") {
-       // console.log("delete me!!")
         if (confirm("Are you sure you want to delete this job?")) {
           Status.deleteJob(e.target) }
     }

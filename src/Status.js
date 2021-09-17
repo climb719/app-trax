@@ -32,7 +32,6 @@ class Status {
         const statusDiv = document.createElement('div')
         appContainer.appendChild(statusDiv)
         this.all.forEach(status => { 
-            //debugger
             statusDiv.innerHTML += `
              <div class= "status-card" id=${status.id}> 
              <p class= "name"> ${status.name}</p>
@@ -40,7 +39,6 @@ class Status {
         this.all.forEach(status => {
             status.jobs.forEach(job => {
               if (job.userId == user.id) {
-                 // console.log(job)
                  job.render() } 
              })
          })
