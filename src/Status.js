@@ -36,13 +36,17 @@ class Status {
              <div class= "status-card" id=${status.id}> 
              <p class= "name"> ${status.name}</p>
              </div>` })
+             this.renderJobs()
+    }
+
+    static renderJobs() {
         this.all.forEach(status => {
-            status.jobs.forEach(job => {
-              if (job.userId == user.id) {
-                 job.render() } 
-             })
-         })
-     }
+        status.jobs.forEach(job => {
+            if (job.userId == user.id) {
+            job.renderCard() } 
+            })
+        })
+    }
  
     static handleForm = () => {
         modal.open()
@@ -87,11 +91,11 @@ class Status {
         api.createJobApp(newApp).then(data => {
             const newJob = new Job(data)
             jobStatus.jobs.push(newJob)
-            newJob.render()
+            newJob.renderCard()
         })
         e.target.reset()
         modal.close()
-      }
+    }
     
 
     static saveUpdate = (saveBtn) => {
@@ -106,7 +110,7 @@ class Status {
         }
         api.updateJobApp(updatedJob).then(updatedJob=> {
         new Job(updatedJob).showDetails()
-        this.checkJobArray(updatedJob.id, updatedJob)
+        this.checkJobArray(updatedJob)
         })   
     }
 
@@ -118,9 +122,9 @@ class Status {
         })
     }
 
-    static checkJobArray(id, newJobInfo) {
+    static checkJobArray(newJobInfo) {
         this.all.forEach(status => {
-        status.jobs.map(job => {
+        status.jobs.forEach(job => {
            if (job.id == newJobInfo.id && job.userId == user.id) { 
              job.statusId = newJobInfo.statusId
              job.notes = newJobInfo.notes

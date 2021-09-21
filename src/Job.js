@@ -12,16 +12,16 @@ class Job {
       this.statusId = statusId
   }
 
-  render = () => {
+  renderCard = () => {
       const {title, company, notes, appDate, link, statusName, id, StatusId} = this
       let n = this.statusId
-     const statusCard = document.getElementById(n)
-     statusCard.innerHTML += `
-      <div class="job-card" data-id=${id} id=card-${id}>
-      <p class="title">${title}</p>
-      <p class="company">${company}</p>
-      <p class="date">${appDate}</p>
-      </div>`
+      const statusCard = document.getElementById(n)
+      statusCard.innerHTML += `
+        <div class="job-card" data-id=${id} id=card-${id}>
+        <p class="title">${title}</p>
+        <p class="company">${company}</p>
+        <p class="date">${appDate}</p>
+        </div>`
   }
   
   
