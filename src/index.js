@@ -5,8 +5,8 @@ let user
 document.querySelector("form").addEventListener("submit", handleUserSubmit)
 
 function handleUserSubmit(e){
-    document.getElementById("main").innerHTML = ""
     e.preventDefault()
+    document.getElementById("main").innerHTML = ""
     api.FindOrCreateUser(e.target.email.value).then(userInfo => {
        user = userInfo
        Status.getStatuses()
