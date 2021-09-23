@@ -4,8 +4,6 @@ class ApiService {
         this.api = api
     }
 
-   // getJobs = () => fetch(this.api + "/jobs").then(resp => resp.json())
-
     getStatuses = () => fetch(this.api + "/statuses").then(resp => resp.json())
 
     createJobApp = (newApp) => {
@@ -14,17 +12,14 @@ class ApiService {
           method: 'POST',
           headers: {
           'Content-Type': 'application/json',
+          Accept: 'application/json'
         },
         body: JSON.stringify(newApp),
       })
       .then(response => response.json())
     }
-    //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   });
 
     updateJobApp = (updatedJob) => {
-      //debugger
         return fetch(`${this.api}/jobs/${updatedJob.id}`, {
           method: 'PATCH',
           headers: {
@@ -34,20 +29,15 @@ class ApiService {
       })
       .then(response => response.json())
     }
-      //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   });
-
-   deleteJob = (id) => {
     
+   deleteJob = (id) => {
         return fetch(`${this.api}/jobs/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'
         }
       })
-      .then(response => response.json())
-      
+      .then(response => response.json())  
     }
 
     FindOrCreateUser = (email) => {
@@ -60,9 +50,5 @@ class ApiService {
     })
     .then(response => response.json())
   }
-  //   .catch((error) => {
-  //     console.error('Error:', error);
-  //   });
-
 
 }

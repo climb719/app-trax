@@ -13,7 +13,7 @@ class Job {
   }
 
   renderCard = () => {
-      const {title, company, notes, appDate, link, statusName, id, StatusId} = this
+      const {title, company, appDate, id} = this
       let n = this.statusId
       const statusCard = document.getElementById(n)
       statusCard.innerHTML += `
@@ -24,9 +24,7 @@ class Job {
         </div>`
   }
   
-  
   static handleCardClick = (e) => {
-
       if (e.target.classList.contains("title")) {
       const id = e.target.closest(".job-card").dataset.id
       console.log(id)
@@ -52,43 +50,38 @@ class Job {
   }
 
   handleShowClick = (e) => {
-    if (e.target.id == "back") {
-      Status.renderMain()
-    }  
-    else if (e.target.innerText == "Edit") {
+      if (e.target.id == "back") {
+        Status.renderMain()
+      }  
+      else if (e.target.innerText == "Edit") {
         this.renderEdit(e.target)
-    }
-    else if (e.target.innerText == "Save") {
-     Status.saveUpdate(e.target)
-    }
-    else if (e.target.id == "delete") {
+      }
+      else if (e.target.innerText == "Save") {
+        Status.saveUpdate(e.target)
+      }
+      else if (e.target.id == "delete") {
         if (confirm("Are you sure you want to delete this job?")) {
           Status.deleteJob(e.target) }
-    }
-}
+      }
+  }
 
   renderEdit = (editBtn) => {
-    const div = editBtn.closest('Div')
-    const note = div.children.item(3)
-    const id = div.children.item(0).id
-    note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes" required>${note.innerText}</textarea><br>`
-    const status = div.children.item(2)
-    const statusId = div.children.item(2).id
-    status.innerHTML = `Update your application status:<select required class= "edited-status"  name="status" id="status_id">
-      <option id="selected-status" selected value=${statusId}>${status.innerText}</option>
-      <option value=1>To Apply</option>
-      <option value=2>Applied</option>
-      <option value=3>Phone Inteview</option>
-      <option value=4>Next Round</option>
-      <option value=5>Offer</option>
-      </select>
-      <input type="hidden" id="job-id" value=${id}>`
-  // const statusSelect = document.getElementById("status_id")
-  // for (let i=0; i < statusSelect.length; i++) {
-  //   if (statusSelect.options[i].value == statusId)
-  //     statusSelect.remove(i)
-  //   } 
-    editBtn.innerText = "Save"
+      const div = editBtn.closest('Div')
+      const note = div.children.item(3)
+      const id = div.children.item(0).id
+      note.innerHTML = `Update your notes:<br> <textarea class="edited-notes" rows="15" cols ="50" name="notes" required>${note.innerText}</textarea><br>`
+      const status = div.children.item(2)
+      const statusId = div.children.item(2).id
+      status.innerHTML = `Update your application status:<select required class= "edited-status"  name="status" id="status_id">
+        <option id="selected-status" selected value=${statusId}>${status.innerText}</option>
+        <option value=1>To Apply</option>
+        <option value=2>Applied</option>
+        <option value=3>Phone Inteview</option>
+        <option value=4>Next Round</option>
+        <option value=5>Offer</option>
+        </select>
+        <input type="hidden" id="job-id" value=${id}>`
+      editBtn.innerText = "Save"
   }
  
 }

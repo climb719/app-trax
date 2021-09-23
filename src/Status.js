@@ -96,7 +96,6 @@ class Status {
         e.target.reset()
         modal.close()
     }
-    
 
     static saveUpdate = (saveBtn) => {
         const div = saveBtn.closest('Div')
@@ -140,9 +139,8 @@ class Status {
         const jobStat = this.all.find(status => status.id == statId)
         const i = jobStat.jobs.findIndex(job => job.id == id)
         jobStat.jobs.splice(i, 1)
-        Status.renderMain() 
         api.deleteJob(id).then(() => {
-        console.log("deleted!")
+            Status.renderMain() 
        })
     }
     
